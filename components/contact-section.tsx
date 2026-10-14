@@ -1,65 +1,82 @@
-import { Button } from "@/components/ui/button"
-import { LinkedinIcon, InstagramIcon, YoutubeIcon, MailIcon } from "./simple-icons"
+import type { ReactNode } from "react"
+import { GraduationCap } from "lucide-react"
+import { Card } from "@/components/ui/card"
+import { ArrowUpRightIcon, GithubIcon, LinkedinIcon } from "./simple-icons"
+import { profile } from "@/lib/profile"
+
+function OrcidMark({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`inline-flex items-center justify-center rounded-full bg-current font-bold ${className}`}
+    >
+      <span className="text-[0.6rem] text-card">iD</span>
+    </span>
+  )
+}
+
+const links: { label: string; description: string; href: string; icon: ReactNode }[] = [
+  {
+    label: "GitHub",
+    description: "Code, models, and analysis tools",
+    href: profile.links.github,
+    icon: <GithubIcon className="w-6 h-6" />,
+  },
+  {
+    label: "LinkedIn",
+    description: "Professional background and updates",
+    href: profile.links.linkedin,
+    icon: <LinkedinIcon className="w-6 h-6" />,
+  },
+  {
+    label: "ORCID",
+    description: "Persistent researcher identifier",
+    href: profile.links.orcid,
+    icon: <OrcidMark className="w-6 h-6" />,
+  },
+  {
+    label: "Google Scholar",
+    description: "Publications and citations",
+    href: profile.links.scholar,
+    icon: <GraduationCap className="w-6 h-6" aria-hidden="true" />,
+  },
+]
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-3xl text-center">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Let's Connect</h2>
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 text-balance leading-relaxed">
-          I'm always interested in hearing about new opportunities in growth marketing, sustainability projects,
-          agricultural innovation, or collaborations. Let's create something impactful together.
-        </p>
-
-        {/* Contact Methods */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <Button size="lg" asChild className="gap-2 min-w-[200px]">
-            <a href="mailto:ritishverma9211helloji@gmail.com">
-              <MailIcon className="w-5 h-5" />
-              Send Email
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" asChild className="gap-2 min-w-[200px] bg-transparent">
-            <a href="https://www.linkedin.com/in/ritish-vermaji/" target="_blank" rel="noopener noreferrer">
-              <LinkedinIcon className="w-5 h-5" />
-              LinkedIn
-            </a>
-          </Button>
+    <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Find Me Online</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
+            {"I'm always happy to talk about seismology, ground motion modeling, teaching, or new collaborations."}
+          </p>
         </div>
 
-        {/* Footer */}
-        <div className="pt-12 border-t border-border">
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <a
-              href="https://www.linkedin.com/in/ritish-vermaji/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon className="w-6 h-6" />
-            </a>
-            <a
-              href="https://instagram.com/ritishverma"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Instagram"
-            >
-              <InstagramIcon className="w-6 h-6" />
-            </a>
-            <a
-              href="https://youtube.com/@ritishverma"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="YouTube"
-            >
-              <YoutubeIcon className="w-6 h-6" />
-            </a>
-          </div>
-          <p className="text-sm text-muted-foreground">© 2025 Ritish Verma. All rights reserved.</p>
-        </div>
+        <ul className="grid sm:grid-cols-2 gap-4 mb-16">
+          {links.map((link) => (
+            <li key={link.label}>
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="group block h-full">
+                <Card className="h-full flex flex-row items-center gap-4 p-6 border-border transition-colors duration-300 group-hover:border-primary">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary shrink-0">
+                    {link.icon}
+                  </span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block font-semibold text-foreground">{link.label}</span>
+                    <span className="block text-sm text-muted-foreground">{link.description}</span>
+                  </span>
+                  <ArrowUpRightIcon className="w-5 h-5 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                </Card>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <footer className="pt-12 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} {profile.name}
+          </p>
+        </footer>
       </div>
     </section>
   )

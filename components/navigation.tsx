@@ -22,10 +22,9 @@ export function Navigation() {
 
   const navItems = [
     { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Journey", href: "#journey" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Contact", href: "#contact" },
+    { label: "Research", href: "#projects" },
+    { label: "Resume", href: "#resume" },
+    { label: "Links", href: "#links" },
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -46,7 +45,7 @@ export function Navigation() {
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
               onClick={handleNavClick}
             >
-              Portfolio
+              Brianna Birkel
             </a>
 
             {/* Desktop Navigation */}
@@ -62,7 +61,7 @@ export function Navigation() {
                 </a>
               ))}
               <Button asChild size="sm" className="ml-4">
-                <a href="#contact" onClick={handleNavClick}>
+                <a href="#links" onClick={handleNavClick}>
                   Get in Touch
                 </a>
               </Button>
@@ -102,7 +101,7 @@ export function Navigation() {
             ))}
             <Button asChild size="lg" className="mt-4">
               <a
-                href="#contact"
+                href="#links"
                 onClick={(e) => {
                   handleNavClick(e)
                   setIsMobileMenuOpen(false)

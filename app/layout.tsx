@@ -9,9 +9,9 @@ const _francoisOne = V0_Font_Francois_One({ subsets: ['latin'], weight: ["400"] 
 const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 
 export const metadata: Metadata = {
-  title: "Ritish Verma - Growth Marketer & Agricultural Innovator",
+  title: "Brianna Birkel - Seismologist",
   description:
-    "Portfolio of Ritish Verma showcasing expertise in growth marketing, sustainable agriculture, and digital innovation",
+    "Portfolio of Brianna Birkel, Ph.D. in Earth Sciences (USC), researching seismic wave amplification, ground motion modeling, and seismic imaging in Southern California and the Nepal Himalaya.",
   generator: "v0.app",
   icons: {
     icon: [
