@@ -50,7 +50,7 @@ const hobbies = [
 
 export function HobbyCharacters() {
   const [visibleCards, setVisibleCards] = useState<number[]>([])
-  const playSound = useSound()
+  const { playSound } = useSound()
 
   useEffect(() => {
     // Stagger animation on mount
