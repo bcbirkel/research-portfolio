@@ -5,18 +5,18 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 
 const hobbies = [
-  { name: "Skateboarding", value: 10, color: "hsl(var(--chart-1))" },
-  { name: "Origami", value: 8, color: "hsl(var(--chart-2))" },
-  { name: "Cinematography", value: 12, color: "hsl(var(--chart-3))" },
-  { name: "Acting", value: 9, color: "hsl(var(--chart-4))" },
-  { name: "Dancing", value: 7, color: "hsl(var(--chart-5))" },
-  { name: "Meme Creation", value: 10, color: "hsl(142, 76%, 36%)" },
-  { name: "Powerlifting", value: 11, color: "hsl(24, 100%, 50%)" },
-  { name: "Running", value: 8, color: "hsl(262, 83%, 58%)" },
-  { name: "Calisthenics", value: 9, color: "hsl(199, 89%, 48%)" },
-  { name: "Cooking", value: 7, color: "hsl(340, 82%, 52%)" },
-  { name: "Programming", value: 13, color: "hsl(48, 100%, 50%)" },
-  { name: "Relearning", value: 6, color: "hsl(173, 80%, 40%)" },
+  { name: "Skateboarding", value: 10, color: "var(--chart-1)" },
+  { name: "Origami", value: 8, color: "var(--chart-2)" },
+  { name: "Cinematography", value: 12, color: "var(--chart-3)" },
+  { name: "Acting", value: 9, color: "var(--chart-4)" },
+  { name: "Dancing", value: 7, color: "var(--chart-5)" },
+  { name: "Meme Creation", value: 10, color: "oklch(0.55 0.07 160)" },
+  { name: "Powerlifting", value: 11, color: "oklch(0.88 0.05 220)" },
+  { name: "Running", value: 8, color: "oklch(0.72 0.07 140)" },
+  { name: "Calisthenics", value: 9, color: "oklch(0.7 0.07 225)" },
+  { name: "Cooking", value: 7, color: "oklch(0.8 0.06 75)" },
+  { name: "Programming", value: 13, color: "oklch(0.38 0.07 155)" },
+  { name: "Relearning", value: 6, color: "oklch(0.82 0.05 190)" },
 ]
 
 export function HobbiesPieChart() {

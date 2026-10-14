@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 import "./globals.css"
 import { Geist_Mono, Francois_One as V0_Font_Francois_One, Geist_Mono as V0_Font_Geist_Mono } from 'next/font/google'
@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#f7f1e3",
 }
 
 export default function RootLayout({

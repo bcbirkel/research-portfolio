@@ -21,19 +21,19 @@ export function IkigaiDiagram() {
 
             {/* Four circles representing Ikigai quadrants */}
             {/* Top - What You Love (Hobbies) */}
-            <circle cx="200" cy="120" r="100" fill="hsl(var(--chart-1))" opacity="0.3" filter="url(#glow)" />
+            <circle cx="200" cy="120" r="100" fill="var(--chart-1)" opacity="0.3" filter="url(#glow)" />
 
             {/* Right - What You're Good At (Skills) */}
-            <circle cx="280" cy="200" r="100" fill="hsl(var(--chart-2))" opacity="0.3" filter="url(#glow)" />
+            <circle cx="280" cy="200" r="100" fill="var(--chart-2)" opacity="0.3" filter="url(#glow)" />
 
             {/* Bottom - What the World Needs */}
-            <circle cx="200" cy="280" r="100" fill="hsl(var(--chart-3))" opacity="0.3" filter="url(#glow)" />
+            <circle cx="200" cy="280" r="100" fill="var(--chart-3)" opacity="0.3" filter="url(#glow)" />
 
             {/* Left - What You Can Be Paid For */}
-            <circle cx="120" cy="200" r="100" fill="hsl(var(--chart-4))" opacity="0.3" filter="url(#glow)" />
+            <circle cx="120" cy="200" r="100" fill="var(--chart-4)" opacity="0.3" filter="url(#glow)" />
 
             {/* Center circle for Ikigai */}
-            <circle cx="200" cy="200" r="35" fill="hsl(142, 76%, 36%)" opacity="0.5" filter="url(#glow)" />
+            <circle cx="200" cy="200" r="35" fill="var(--primary)" opacity="0.5" filter="url(#glow)" />
 
             {/* Labels */}
             <text x="200" y="60" textAnchor="middle" className="fill-foreground text-sm font-semibold">
@@ -73,7 +73,7 @@ export function IkigaiDiagram() {
             <div className="flex items-start gap-3">
               <div
                 className="w-6 h-6 rounded-full flex-shrink-0 mt-1"
-                style={{ backgroundColor: "hsl(var(--chart-1))", opacity: 0.6 }}
+                style={{ backgroundColor: "var(--chart-1)", opacity: 0.6 }}
               />
               <div>
                 <h4 className="font-semibold mb-1">What I Love</h4>
@@ -87,7 +87,7 @@ export function IkigaiDiagram() {
             <div className="flex items-start gap-3">
               <div
                 className="w-6 h-6 rounded-full flex-shrink-0 mt-1"
-                style={{ backgroundColor: "hsl(var(--chart-2))", opacity: 0.6 }}
+                style={{ backgroundColor: "var(--chart-2)", opacity: 0.6 }}
               />
               <div>
                 <h4 className="font-semibold mb-1">What I'm Good At</h4>
@@ -100,7 +100,7 @@ export function IkigaiDiagram() {
             <div className="flex items-start gap-3">
               <div
                 className="w-6 h-6 rounded-full flex-shrink-0 mt-1"
-                style={{ backgroundColor: "hsl(var(--chart-3))", opacity: 0.6 }}
+                style={{ backgroundColor: "var(--chart-3)", opacity: 0.6 }}
               />
               <div>
                 <h4 className="font-semibold mb-1">What the World Needs</h4>
@@ -113,7 +113,7 @@ export function IkigaiDiagram() {
             <div className="flex items-start gap-3">
               <div
                 className="w-6 h-6 rounded-full flex-shrink-0 mt-1"
-                style={{ backgroundColor: "hsl(var(--chart-4))", opacity: 0.6 }}
+                style={{ backgroundColor: "var(--chart-4)", opacity: 0.6 }}
               />
               <div>
                 <h4 className="font-semibold mb-1">What I Can Be Paid For</h4>
@@ -128,7 +128,7 @@ export function IkigaiDiagram() {
             <div className="flex items-center gap-3">
               <div
                 className="w-6 h-6 rounded-full flex-shrink-0"
-                style={{ backgroundColor: "hsl(142, 76%, 36%)", opacity: 0.7 }}
+                style={{ backgroundColor: "var(--primary)", opacity: 0.7 }}
               />
               <p className="text-sm italic text-muted-foreground">
                 My Ikigai lies at the intersection: Creating sustainable solutions through digital innovation and

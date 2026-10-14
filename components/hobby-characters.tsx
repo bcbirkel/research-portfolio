@@ -110,7 +110,7 @@ export function HobbyCharacters() {
               {/* Sparkles effect */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
                 <div
-                  className="sparkle absolute w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100"
+                  className="sparkle absolute w-1 h-1 bg-secondary-foreground/60 rounded-full opacity-0 group-hover:opacity-100"
                   style={{
                     top: "20%",
                     left: "20%",
@@ -118,7 +118,7 @@ export function HobbyCharacters() {
                   }}
                 />
                 <div
-                  className="sparkle absolute w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100"
+                  className="sparkle absolute w-1 h-1 bg-secondary-foreground/60 rounded-full opacity-0 group-hover:opacity-100"
                   style={{
                     top: "60%",
                     right: "20%",
@@ -126,7 +126,7 @@ export function HobbyCharacters() {
                   }}
                 />
                 <div
-                  className="sparkle absolute w-1 h-1 bg-white rounded-full opacity-0 group-hover:opacity-100"
+                  className="sparkle absolute w-1 h-1 bg-secondary-foreground/60 rounded-full opacity-0 group-hover:opacity-100"
                   style={{
                     bottom: "20%",
                     left: "50%",

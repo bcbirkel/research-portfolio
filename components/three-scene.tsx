@@ -28,10 +28,10 @@ function EarthScene() {
         <div className="relative w-64 h-64">
           {/* Earth sphere */}
           <div
-            className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 via-green-600 to-blue-800 shadow-2xl animate-spin-slow"
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-200 via-emerald-700 to-sky-400 shadow-2xl animate-spin-slow"
             style={{
               animation: "rotate 60s linear infinite",
-              boxShadow: "0 0 80px rgba(59, 130, 246, 0.5), inset 0 0 40px rgba(0, 0, 0, 0.5)",
+              boxShadow: "0 0 80px rgba(125, 180, 220, 0.45), inset 0 0 40px rgba(20, 60, 40, 0.3)",
             }}
           >
             {/* Earth texture overlay */}
@@ -47,7 +47,7 @@ function EarthScene() {
           />
 
           {/* Glow effect */}
-          <div className="absolute inset-0 rounded-full blur-3xl bg-blue-500/20 animate-pulse" />
+          <div className="absolute inset-0 rounded-full blur-3xl bg-sky-300/30 animate-pulse" />
         </div>
       </div>
 

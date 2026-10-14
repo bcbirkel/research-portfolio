@@ -84,7 +84,7 @@ export function BackgroundAnimations() {
     // Draw functions
     const drawStars = () => {
       starsRef.current.forEach((star) => {
-        ctx.fillStyle = `rgba(139, 154, 126, ${star.opacity})`
+        ctx.fillStyle = `rgba(110, 165, 205, ${star.opacity})`
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
         ctx.fill()
@@ -119,8 +119,8 @@ export function BackgroundAnimations() {
           comet.x - Math.cos(comet.angle) * comet.length,
           comet.y - Math.sin(comet.angle) * comet.length,
         )
-        gradient.addColorStop(0, `rgba(139, 154, 126, ${comet.opacity})`)
-        gradient.addColorStop(1, "rgba(139, 154, 126, 0)")
+        gradient.addColorStop(0, `rgba(110, 165, 205, ${comet.opacity})`)
+        gradient.addColorStop(1, "rgba(110, 165, 205, 0)")
 
         ctx.strokeStyle = gradient
         ctx.lineWidth = 2
