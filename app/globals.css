@@ -124,6 +124,16 @@
   background: var(--background);
 }
 
+#hero {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--sage) 18%, var(--background)) 0%,
+    color-mix(in oklch, var(--sage) 7%, var(--background)) 55%,
+    var(--background) 100%
+  );
+  color: var(--foreground);
+}
+
 :root {
   --research-tint: color-mix(in oklch, var(--sage) 25%, var(--card));
 }
