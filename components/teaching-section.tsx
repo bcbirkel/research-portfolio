@@ -1,5 +1,5 @@
 const courses = [
-  { code: "PHYS 135A", title: "Physics for the Life Sciences", description: "Fundamental physics with applications to the life sciences." },
+  { code: "PHYS 135A", title: "Physics for the Life Sciences", description: "Introductory mechanics, fluids, waves, and thermodynamics for students in the life sciences and health professions. The course combines quantitative problem solving with laboratory experiments to connect physical principles with observable phenomena." },
   { code: "CORE 103", title: "Processes of Change in Science", description: "Social and economic impacts of natural hazards; the power and limitations of science through a geophysical lens; and the roles of media, government, and lobbyists in hazard response." },
   { code: "GEOL 240", title: "Earthquakes", description: "Causes of earthquakes and the nature of large faults, earthquake hazard and risk, the world’s great earthquakes, and understanding the Richter scale." },
   { code: "GEOL 160", title: "Introduction to Geosystems", description: "Natural geological and environmental systems, their variability, and processes near Earth’s surface in the region that supports most life: the biosphere." },

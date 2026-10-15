@@ -45,10 +45,24 @@ The Scholar profile was taken from the existing GitHub Pages site's configuratio
 
 - Research findings and methods: the author-provided dissertation, *Multiscale Computational Modeling and Seismic Imaging Across Complex Geologic Domains* (2026), Chapters 1–3. Ground-motion findings follow Sections 1.2–1.5; the selected GDANT benchmark values are from Table 2.3, with field interpretation from Section 2.5.3; the Nepal description follows Sections 3.2 and 3.5. [Dissertation DOI](https://doi.org/10.25549/USCTHESES-OUC11399O3HY).
 - The Nepal application explicitly uses the author's GDANT method, as confirmed by the author and Chapter 3. Do not link the private GDANT repository.
-- Microseismicity descriptions are based on the CV and emphasize integration of machine-learning phase picking with association and relocation. No model-training, detection-accuracy, or catalog-size claim is made.
+- Microseismicity descriptions use the CV and the author-supplied workflow diagram: ObsPy; PhaseNet + REAL or QuakeMigrate; VELEST, Hypoinverse, or a combined location route; and hypoDD. No model-training, detection-accuracy, or catalog-size claim is made.
 - Software capabilities follow the public [spatial-vtk README](https://github.com/bcbirkel/spatial-vtk). The software appears in its own homepage section and is linked from ground-motion validation.
-- PHYS 135A teaching experience was supplied by the author. Its title is verified in the [USC Physics course listing](https://dornsife.usc.edu/physics/general-education/).
+- PHYS 135A teaching experience was supplied by the author. Its title is verified in the [USC Physics course listing](https://dornsife.usc.edu/physics/general-education/), and course topics follow the [Fall 2024 syllabus](https://web-app.usc.edu/soc/syllabus/20243/50342.pdf): mechanics, fluids, waves, and thermodynamics, with lecture and laboratory components.
 - Student reviews, their attribution, and the selection shown by default are restored verbatim from the original portfolio. Do not edit or synthesize testimonial wording.
 - Interface sounds have been removed, including their unused hook and audio implementation.
 
 The microseismicity figure is the author's supplied `nepal_seismicity.png`, used unchanged in `public/images/nepal-seismicity.png`.
+
+The author-supplied tectonic-context PDF is rendered at 2400 × 1600 pixels in `public/images/nepal-tectonic-framework.webp`; the supplied workflow screenshot is preserved as lossless WebP in `public/images/microseismicity-workflow.webp`. Original figure labels and references are retained. Each figure opens at full size.
+
+Project pages share a type scale: 24px section headings, 20px subheadings, 18px body and summary text, and 16px captions/tables/source notes. The separate Interpretation and limits blocks have been removed.
+
+### Pending defense material
+
+The linked `Defense.pptx` (767 MB) exceeds the Drive connector download limit (268 MB), so its slides have not yet been read or incorporated. Request a smaller deck or a PDF plus separate animation files. Preserve the original slide numbers when splitting:
+
+- Validation: 10, 14 (animation), 21–22, 29, 32.
+- GDANT: 43, 46 (animation; otherwise 47), 49, 120.
+- Nepal imaging: 56–57, 65 (replace the current profile), 66, 71, 73; methods 128, 132–133.
+
+Review the surrounding explanations as well as the selected figures before updating the scientific narrative. The existing dissertation-based descriptions and Nepal profile remain until those source slides are available.

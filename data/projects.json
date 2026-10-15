@@ -46,7 +46,6 @@
         "text": "I compared the wavefield diagnostics with independent structural constraints, including gravity-derived basin geometry. Missing arrivals can motivate tests of basin edges and connected low-velocity paths, while amplitude and duration biases require separate evaluation."
       }
     ],
-    "interpretation": "These results identify validation targets, not a unique cause for every mismatch. Source assumptions, the imposed minimum shear-wave velocity, attenuation, and uneven event coverage also affect the simulations.",
     "sourceNote": "Dissertation, Chapter 1, especially Sections 1.2–1.5.",
     "codeLinks": [
       {
@@ -57,7 +56,9 @@
         "label": "spatial-vtk documentation",
         "href": "https://bcbirkel.github.io/spatial-vtk/"
       }
-    ]
+    ],
+    "contextFigures": [],
+    "methodFigures": []
   },
   {
     "id": "chapter-2",
@@ -119,9 +120,10 @@
         "text": "Synthetic models provide a known reference for recovery error. Directional perturbations test sensitivity to shared noise-source errors. The BASIN application tests whether the recovered structure is consistent with independent geophysical observations."
       }
     ],
-    "interpretation": "GDANT cannot recover information absent from the available measurements. Its performance depends on path coverage, phase stability, regularization, and correct uncertainty propagation; it is not a universal replacement for direct ambient noise tomography.",
     "sourceNote": "Dissertation, Chapter 2; benchmark values from Table 2.3. Field comparison in Section 2.5.3.",
-    "codeLinks": []
+    "codeLinks": [],
+    "contextFigures": [],
+    "methodFigures": []
   },
   {
     "id": "nepal-subsurface",
@@ -152,8 +154,8 @@
         "text": "Very shallow observations emphasize loose soil and weathered material toward the south, while the longer-wavelength seismic model emphasizes the deeper ridge interior. These contrasting trends reflect the different rock volumes sampled."
       },
       {
-        "title": "Fracturing is a supported interpretation, not a unique answer",
-        "text": "The northern low-velocity body is consistent with distributed fracture damage when considered alongside borehole and regional evidence. Weathering, fluids, fabric, and lithology can also lower velocity and are not uniquely separable from this model alone."
+        "title": "Northern low velocities point to fractured rock",
+        "text": "The northern low-velocity body is consistent with distributed fracture damage. This interpretation brings the seismic model together with borehole observations and regional evidence for long-term tectonic deformation."
       }
     ],
     "methods": [
@@ -170,9 +172,10 @@
         "text": "Point-spread tests spread compact anomalies over approximately 1.1–1.3 km laterally and 0.3–0.5 km vertically. The broad northern anomaly spans several resolution widths, while thin surface layers and sharp boundaries remain smoothed."
       }
     ],
-    "interpretation": "Shear-wave velocity is sensitive to several material properties. The model supports broad structural contrasts; it does not uniquely determine fracture density, water content, or landslide susceptibility.",
     "sourceNote": "Dissertation, Chapter 3, especially Sections 3.2 and 3.5.",
-    "codeLinks": []
+    "codeLinks": [],
+    "contextFigures": [],
+    "methodFigures": []
   },
   {
     "id": "himalayan-microseismicity",
@@ -181,7 +184,7 @@
     "description": "An earthquake-catalog workflow combining machine learning–based phase detection with association and relocation of small Himalayan earthquakes.",
     "image": "/images/nepal-seismicity.png",
     "imageAlt": "Earthquake locations in the Nepal Himalaya in four panels: a longitude–latitude map, depth profiles against latitude and longitude, and a three-dimensional view. Points are colored by local magnitude (ML).",
-    "imageCaption": "Nepal earthquake catalog: map view, depth profiles, and a three-dimensional view, colored by local magnitude (ML).",
+    "imageCaption": "Earthquake locations viewed from the surface, in depth profiles, and in three dimensions. Together, these views show the catalog’s horizontal and vertical distribution; color indicates local magnitude (ML).",
     "tags": [
       "Machine Learning",
       "Signal Analysis",
@@ -192,33 +195,58 @@
     "significance": "This project demonstrates how I integrate machine-learning tools into a scientific analysis: converting automated detections into a structured data product that can support questions about the distribution of seismicity.",
     "benchmarks": [],
     "findingsTitle": "Workflow highlights",
-    "studyDesign": "I developed the earthquake-catalog workflow, integrating machine learning–based seismic phase picking with phase association and double-difference relocation. I used machine learning to identify candidate arrivals in waveform records, then connected those outputs to the seismological steps needed to group detections into events and refine their locations.",
+    "studyDesign": "I developed an earthquake-catalog workflow that connects machine learning–based phase picking with phase association, absolute location, and double-difference relocation. The dense seismic array near Melamchi provides observations within the central Nepal Himalaya. I use these records to turn candidate arrivals into an earthquake catalog and examine the distribution of seismicity in its regional tectonic setting.",
     "findings": [
       {
-        "title": "Machine learning at the detection stage",
-        "text": "Automated phase picking identifies candidate seismic arrivals in continuous waveform data, providing inputs for the catalog-building workflow."
+        "title": "Machine learning turns continuous records into phase picks",
+        "text": "PhaseNet identifies candidate seismic arrivals, and REAL associates picks across stations into events. The workflow also includes QuakeMigrate as an alternative detection and location approach."
       },
       {
-        "title": "Connect detections across stations",
-        "text": "Phase association groups arrivals that can be explained by a common earthquake. This connects individual machine-learning picks to event-level observations."
+        "title": "Velocity models connect arrival times to earthquake locations",
+        "text": "The location workflow includes VELEST, Hypoinverse, and a combined approach. VELEST also supports one-dimensional velocity-model inversion, including models with and without a low-velocity zone."
       },
       {
-        "title": "Refine the spatial pattern of seismicity",
-        "text": "Double-difference relocation uses relative arrival-time information to refine the locations of nearby earthquakes, linking automated detection with a geophysical interpretation of the catalog."
+        "title": "Relative locations reveal the catalog’s spatial structure",
+        "text": "Double-difference relocation with hypoDD refines the relative positions of nearby earthquakes. Map, depth, and three-dimensional views then bring the resulting spatial distribution into focus."
       }
     ],
     "methods": [
       {
-        "title": "From waveform data to a research product",
-        "text": "The study combines machine-learning outputs, signal analysis, and earthquake-location methods in one workflow. Each stage has a distinct role: finding arrivals, identifying events, and estimating their locations."
+        "title": "1. Prepare continuous waveform data",
+        "text": "I preprocess the continuously recorded seismic data with ObsPy to provide the waveform inputs for phase detection and event association."
       },
       {
-        "title": "Keep detection and interpretation separate",
-        "text": "A candidate phase pick is not itself an earthquake location. Association and relocation provide the physical relationships needed to interpret detections across a seismic network."
+        "title": "2. Detect phases and associate events",
+        "text": "The machine-learning branch uses PhaseNet for seismic phase picking and REAL to group arrivals across stations. QuakeMigrate provides an alternative branch of the workflow. These steps connect individual waveform detections to candidate earthquakes."
+      },
+      {
+        "title": "3. Estimate absolute locations and velocity structure",
+        "text": "The workflow includes VELEST, Hypoinverse, and a combined VELEST–Hypoinverse route. In the VELEST branch, earthquake location is paired with one-dimensional velocity inversion, with options that include or omit a low-velocity zone."
+      },
+      {
+        "title": "4. Refine relative locations",
+        "text": "The absolute-location branches feed into hypoDD for double-difference relocation. Relative arrival-time information refines the spatial relationships among nearby events, producing the catalog shown in the map and depth projections."
       }
     ],
-    "interpretation": "Catalog completeness and location precision require separate evaluation. An event location alone is insufficient to assign an earthquake to a specific fault without considering uncertainty and independent structural information.",
-    "sourceNote": "Project overview based on the research experience described in my CV.",
-    "codeLinks": []
+    "sourceNote": "Research experience described in my CV, with the workflow, tectonic-context figure, and earthquake-catalog figure supplied by the author.",
+    "codeLinks": [],
+    "contextFigures": [
+      {
+        "src": "/images/nepal-tectonic-framework.webp",
+        "alt": "Four-panel tectonic context: the India–Eurasia collision, central Nepal and the 2015 Gorkha earthquake, the nodal array near Melamchi, and published Main Himalayan Thrust geometries.",
+        "caption": "The array connects local earthquake observations to the Himalayan tectonic setting. The panels move from the India–Eurasia collision to central Nepal, the Melamchi-area deployment, and published interpretations of Main Himalayan Thrust geometry. Panel (d) is adapted from Thapa et al. (2023), with the original references retained in the figure.",
+        "width": 2400,
+        "height": 1600
+      }
+    ],
+    "methodFigures": [
+      {
+        "src": "/images/microseismicity-workflow.webp",
+        "alt": "Catalog workflow: ObsPy preprocessing; PhaseNet with REAL or QuakeMigrate; VELEST, Hypoinverse, or a combined absolute-location route; then hypoDD relative relocation.",
+        "caption": "From continuous data to a relocated catalog. The workflow places machine-learning phase picking within a sequence of association, velocity-model and absolute-location calculations, and double-difference relocation. Parallel branches show the alternative approaches included at each stage.",
+        "width": 2048,
+        "height": 618
+      }
+    ]
   }
 ]
