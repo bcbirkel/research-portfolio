@@ -51,6 +51,9 @@ export function ContactSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             {"Let's connect about opportunities in data analysis, AI evaluation, geophysics, or research collaborations."}
           </p>
+          <a href="mailto:birkel@usc.edu" className="mt-6 inline-block text-lg font-medium text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+            birkel@usc.edu
+          </a>
         </div>
 
         <ul className="grid sm:grid-cols-2 gap-4 mb-16">

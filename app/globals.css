@@ -121,7 +121,21 @@
 }
 
 .research-paper {
+  position: relative;
+  isolation: isolate;
   background: var(--background);
+}
+
+.research-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url('/images/paper-grain.png') repeat;
+  background-size: 480px 480px;
+  mix-blend-mode: soft-light;
+  opacity: 0.18;
 }
 
 #hero {
