@@ -28,7 +28,7 @@ export function AboutSection() {
                 Nepal Himalaya.
               </p>
               <p className="text-pretty">
-                I&apos;m interested in bringing this analytical approach to data analysis, AI evaluation, and geophysics roles. My research and teaching have emphasized comparing models with observations, working across disciplines, and making technical ideas accessible.
+                My research and teaching have emphasized comparing models with observations, working across disciplines, and making technical ideas accessible. I&apos;m interested in bringing these skills to research scientist roles inside or outside of geophysics, and am looking for a collaborative environment to continue to grow and learn.
               </p>
             </div>
 
