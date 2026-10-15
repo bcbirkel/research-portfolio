@@ -58,7 +58,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm text-primary font-medium mb-1">{project.subtitle}</p>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-balance">{project.title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-balance"><a href={`/projects/${project.id}`} className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-ring">{project.title}</a></h3>
               </div>
               <ArrowUpRightIcon
                 className={`text-primary transition-transform duration-300 w-6 h-6 ${
