@@ -32,11 +32,8 @@ export function HeroSection() {
           <p className="text-2xl sm:text-3xl md:text-4xl text-primary mb-6 text-balance leading-snug">
             Making sense of complex data.
           </p>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 text-pretty leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty leading-relaxed">
             I bring a research-driven approach to analyzing data, testing models, and communicating results—with a foundation in computational geophysics.
-          </p>
-          <p className="text-sm sm:text-base text-muted-foreground mb-10 text-balance leading-relaxed">
-            Exploring opportunities in data analysis, AI evaluation, and geophysics.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild>
