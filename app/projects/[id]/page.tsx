@@ -40,8 +40,8 @@ export default async function ProjectPage({ params }: Props) {
           <ul className="flex flex-wrap gap-3">{project.tags.map((tag) => <li key={tag} className="rounded-full bg-secondary px-4 py-2 text-sm text-secondary-foreground">{tag}</li>)}</ul>
         </section>
         <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-semibold">Further reading</h2>
-          <p className="mb-6 leading-relaxed text-muted-foreground">Part of my doctoral research at USC. This summary draws on my October 2026 resume; the dissertation provides the full technical context.</p>
+          
+          
           <div className="flex flex-wrap gap-6">
             <a href="https://www.proquest.com/docview/3395749099" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Read the dissertation on ProQuest</a>
             <a href="/documents/brianna-birkel-resume.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">View resume (PDF)</a>
