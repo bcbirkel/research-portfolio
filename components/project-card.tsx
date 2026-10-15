@@ -27,12 +27,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const { playSound } = useSound()
 
   return (
-    <Card className="group relative h-full overflow-hidden pt-0 transition-shadow hover:shadow-lg" onMouseEnter={() => playSound("hover", 0.2)}>
+    <Card className="research-card group relative h-full overflow-hidden pt-0 transition-shadow hover:shadow-lg" onMouseEnter={() => playSound("hover", 0.2)}>
       <figure className="border-b border-border">
         <div className="relative aspect-[16/10] bg-card text-card-foreground">
           <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(min-width: 768px) 50vw, 100vw" className="object-contain p-3" />
         </div>
-        <figcaption className="px-6 py-3 text-sm leading-relaxed text-muted-foreground">{project.imageCaption}</figcaption>
       </figure>
       <CardHeader>
         <p className="text-sm font-medium text-primary">{project.subtitle}</p>

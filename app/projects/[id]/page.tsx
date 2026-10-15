@@ -32,7 +32,6 @@ export default async function ProjectPage({ params }: Props) {
           <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size figure for ${project.title}`}>
             <img src={project.image} alt={project.imageAlt} className="h-auto w-full" />
           </a>
-          <figcaption className="p-4 text-sm leading-relaxed">{project.imageCaption} <span className="text-muted-foreground">Select the figure to view full size.</span></figcaption>
         </figure>
         <section aria-labelledby="overview" className="rounded-xl border border-border bg-card p-8 text-card-foreground">
           <h2 id="overview" className="mb-4 text-2xl font-semibold">Research overview</h2>
