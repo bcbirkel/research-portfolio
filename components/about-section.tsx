@@ -55,7 +55,7 @@ export function AboutSection() {
                 alt="Brianna Birkel in doctoral graduation regalia outside the USC Earth Sciences building"
                 fill
                 sizes="(min-width: 768px) 384px, 100vw"
-                className="object-cover object-center"
+                className="translate-y-[1%] scale-[1.03] object-cover object-[58%_center]"
               />
             </div>
           </div>
