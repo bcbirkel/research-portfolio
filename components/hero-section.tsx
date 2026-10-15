@@ -1,17 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { ChevronDownIcon } from "./simple-icons"
 import { Button } from "@/components/ui/button"
 import { profile } from "@/lib/profile"
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
   return (
     <section
       id="hero"
@@ -30,9 +23,7 @@ export function HeroSection() {
             />
           </div>
         <div
-          className={`min-w-0 flex-1 text-center md:text-left transition-all duration-1000 motion-reduce:transition-none ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className="min-w-0 flex-1 text-center md:text-left"
         >
           <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
             {profile.name}
