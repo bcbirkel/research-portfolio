@@ -5,7 +5,7 @@ export function TimelineSection() {
     <section id="resume" aria-labelledby="resume-heading" className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 md:py-32">
       <div className="container mx-auto max-w-5xl">
         <header className="mb-10 text-center">
-          <h2 id="resume-heading" className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">CV</h2>
+          <h2 id="resume-heading" className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">Curriculum Vitae</h2>
             <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-primary px-5 py-3 font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Open CV (PDF)</a>
             <a href={resumeUrl} download="Brianna-Birkel-Resume.pdf" className="rounded-lg border border-border bg-card px-5 py-3 font-medium text-card-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Download CV</a>

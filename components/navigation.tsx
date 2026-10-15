@@ -62,7 +62,7 @@ export function Navigation() {
               ))}
               <Button asChild size="sm" className="ml-4">
                 <a href="#links" onClick={handleNavClick}>
-                  Contact Me
+                  Get in touch
                 </a>
               </Button>
             </div>
@@ -107,7 +107,7 @@ export function Navigation() {
                   setIsMobileMenuOpen(false)
                 }}
               >
-                Contact Me
+                Get in touch
               </a>
             </Button>
           </div>

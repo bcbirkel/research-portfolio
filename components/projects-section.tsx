@@ -7,18 +7,14 @@ export function ProjectsSection() {
     <section id="projects" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-secondary/30">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Dissertation Research</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            Multiscale Computational Modeling and Seismic Imaging Across Complex Geologic Domains: Applications to
-            Southern California and the Nepal Himalaya
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Research Projects</h2>
           <a
             href={profile.dissertation}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-4 text-sm font-medium text-primary underline-offset-4 hover:underline"
           >
-            Read the full dissertation on ProQuest
+            See my full dissertation on ProQuest
           </a>
         </div>
 
