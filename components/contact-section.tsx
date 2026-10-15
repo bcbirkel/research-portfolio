@@ -1,26 +1,15 @@
 import type { ReactNode } from "react"
-import { GraduationCap } from "lucide-react"
+import { GraduationCap, Mail } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { ArrowUpRightIcon, GithubIcon, LinkedinIcon } from "./simple-icons"
 import { profile } from "@/lib/profile"
 
-function OrcidMark({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`inline-flex items-center justify-center rounded-full bg-current font-bold ${className}`}
-    >
-      <span className="text-[0.6rem] text-card">iD</span>
-    </span>
-  )
-}
-
 const links: { label: string; description: string; href: string; icon: ReactNode }[] = [
   {
-    label: "GitHub",
-    description: "Code, models, and analysis tools",
-    href: profile.links.github,
-    icon: <GithubIcon className="w-6 h-6" />,
+    label: "Email",
+    description: "birkel@usc.edu",
+    href: "mailto:birkel@usc.edu",
+    icon: <Mail className="w-6 h-6" aria-hidden="true" />,
   },
   {
     label: "LinkedIn",
@@ -29,10 +18,10 @@ const links: { label: string; description: string; href: string; icon: ReactNode
     icon: <LinkedinIcon className="w-6 h-6" />,
   },
   {
-    label: "ORCID",
-    description: "Persistent researcher identifier",
-    href: profile.links.orcid,
-    icon: <OrcidMark className="w-6 h-6" />,
+    label: "GitHub",
+    description: "Code, models, and analysis tools",
+    href: profile.links.github,
+    icon: <GithubIcon className="w-6 h-6" />,
   },
   {
     label: "Google Scholar",
@@ -51,9 +40,6 @@ export function ContactSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             {"Let's connect about opportunities in data analysis, AI evaluation, geophysics, or research collaborations."}
           </p>
-          <a href="mailto:birkel@usc.edu" className="mt-6 inline-block text-lg font-medium text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
-            birkel@usc.edu
-          </a>
         </div>
 
         <ul className="grid sm:grid-cols-2 gap-4 mb-16">
