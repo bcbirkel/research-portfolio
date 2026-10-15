@@ -19,8 +19,7 @@ export function TeachingSection() {
     <section id="teaching" aria-labelledby="teaching-heading" className="scroll-mt-24 bg-secondary/30 px-4 py-20 sm:px-6 lg:px-8 md:py-32 text-foreground">
       <div className="container mx-auto max-w-5xl">
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Teaching & mentorship</p>
-          <h2 id="teaching-heading" className="mb-6 text-balance text-4xl font-bold tracking-tight md:text-5xl">Building intuition. Encouraging curiosity.</h2>
+        <h2 id="teaching-heading" className="mb-6 text-balance text-4xl font-bold tracking-tight md:text-5xl">Teaching &amp; Mentorship</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">Teaching is one of my favorite parts of academic life — I love helping students build intuition around complex Earth systems. My approach emphasizes curiosity, real-world relevance, and active engagement. I aim to create an inclusive, supportive learning environment where students feel confident asking questions and exploring ideas.</p>
         </header>
         <h3 className="mb-2 text-2xl font-semibold">Courses taught</h3>

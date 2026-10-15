@@ -34,24 +34,18 @@ export function HeroSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <p className="text-sm sm:text-base font-medium uppercase tracking-widest text-muted-foreground mb-6">
-            {profile.affiliation}
-          </p>
           <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">
             {profile.name}
           </h1>
-          <p className="text-2xl sm:text-3xl md:text-4xl text-primary mb-6 text-balance leading-snug">
-            Making sense of complex data.
-          </p>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty leading-relaxed">
-            I bring a research-driven approach to analyzing data, testing models, and communicating results—with a foundation in computational geophysics.
+            Computational geophysics Ph.D. bringing a research-driven approach to analyzing complex data, testing and validating models, and clearly communicating scientific results.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <Button size="lg" asChild>
               <a href="#projects">Explore my work</a>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-transparent">
-              <a href="#resume">View resume</a>
+              <a href="#resume">View CV</a>
             </Button>
           </div>
         </div>

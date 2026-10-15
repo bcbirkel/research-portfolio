@@ -47,7 +47,7 @@ export function ContactSection() {
     <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-secondary/30">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Find Me Online</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Contact Me</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             {"Let's connect about opportunities in data analysis, AI evaluation, geophysics, or research collaborations."}
           </p>

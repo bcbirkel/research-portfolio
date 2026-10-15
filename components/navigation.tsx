@@ -23,9 +23,9 @@ export function Navigation() {
   const navItems = [
     { label: "About", href: "#about" },
     { label: "Research", href: "#projects" },
-    { label: "Resume", href: "#resume" },
+    { label: "CV", href: "#resume" },
     { label: "Teaching", href: "#teaching" },
-    { label: "Links", href: "#links" },
+    { label: "Contact Me", href: "#links" },
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
