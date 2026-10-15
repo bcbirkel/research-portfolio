@@ -12,7 +12,7 @@ export function ProjectsSection() {
             href={profile.dissertation}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 text-sm font-medium text-primary underline-offset-4 hover:underline"
+            className="inline-block mt-4 text-lg font-medium text-primary underline-offset-4 hover:underline"
           >
             See my full dissertation on ProQuest
           </a>

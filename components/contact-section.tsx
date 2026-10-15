@@ -44,7 +44,7 @@ const links: { label: string; description: string; href: string; icon: ReactNode
 
 export function ContactSection() {
   return (
-    <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+    <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-background text-foreground">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Contact Me</h2>
