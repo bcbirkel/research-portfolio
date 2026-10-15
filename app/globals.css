@@ -125,25 +125,16 @@
 }
 
 :root {
-  --research-tint: color-mix(in oklch, var(--secondary) 65%, var(--card));
-  --hero-panel: var(--primary);
-  --hero-panel-foreground: var(--primary-foreground);
+  --research-tint: color-mix(in oklch, var(--sage) 25%, var(--card));
 }
 
 .dark {
-  --research-tint: color-mix(in oklch, var(--sage-dark) 20%, var(--card));
-  --hero-panel: var(--sage-dark);
-  --hero-panel-foreground: var(--foreground);
+  --research-tint: color-mix(in oklch, var(--sage-dark) 40%, var(--card));
 }
 
 .research-card {
   background: linear-gradient(145deg, var(--card) 35%, var(--research-tint));
   color: var(--card-foreground);
-}
-
-.hero-panel {
-  background: var(--hero-panel);
-  color: var(--hero-panel-foreground);
 }
 
 @layer base {
