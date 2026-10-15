@@ -32,6 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="relative aspect-[16/10] bg-card text-card-foreground">
           <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(min-width: 768px) 50vw, 100vw" className="object-contain p-3" />
         </div>
+        <figcaption className="px-5 pb-4 text-sm leading-relaxed text-muted-foreground">{project.imageCaption}</figcaption>
       </figure>
       <CardHeader>
         <p className="text-sm font-medium text-primary">{project.subtitle}</p>
@@ -49,3 +50,4 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </Card>
   )
 }
+

@@ -35,7 +35,10 @@ export function TeachingSection() {
         </div>
         <h3 className="mb-6 mt-12 text-2xl font-semibold">In students&apos; words</h3>
         <div className="grid gap-6 md:grid-cols-2">
-          {[reviews[0], reviews[3]].map((review) => (
+          {[
+            { ...reviews[2], quote: "While working in the laboratory, she provides clear and concise instruction and even demonstrates experiments for us in a fascinating and informative manner." },
+            { ...reviews[3], quote: "It was a super safe and encouraging learning environment." },
+          ].map((review) => (
             <figure key={review.source} className="rounded-xl bg-background p-6 text-foreground">
               <blockquote className="text-lg leading-relaxed">{`“${review.quote}”`}</blockquote>
               <figcaption className="mt-5 text-sm font-medium text-primary">{review.source}</figcaption>
@@ -45,7 +48,7 @@ export function TeachingSection() {
         <details className="mt-6 rounded-xl border border-border bg-card p-6 text-card-foreground">
           <summary className="cursor-pointer font-medium text-primary focus-visible:outline-2 focus-visible:outline-ring">Read more student feedback</summary>
           <div className="mt-6 flex flex-col gap-8">
-            {[reviews[1], reviews[2], reviews[4], reviews[5]].map((review, index) => (
+            {reviews.map((review, index) => (
               <figure key={index}>
                 <blockquote className="leading-relaxed text-muted-foreground">{`“${review.quote}”`}</blockquote>
                 <figcaption className="mt-3 text-sm font-medium">{review.source}</figcaption>
@@ -57,3 +60,4 @@ export function TeachingSection() {
     </section>
   )
 }
+

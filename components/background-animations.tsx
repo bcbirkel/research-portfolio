@@ -34,7 +34,7 @@ export function BackgroundAnimations() {
   const cometsRef = useRef<Comet[]>([])
   const plantsRef = useRef<Plant[]>([])
   const lastCometTime = useRef(0)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -226,3 +226,4 @@ export function BackgroundAnimations() {
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" style={{ mixBlendMode: "screen" }} />
 }
+

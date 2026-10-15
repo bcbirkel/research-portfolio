@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import projects from "@/data/projects.json"
+import { profile } from "@/lib/profile"
 
 type Props = { params: Promise<{ id: string }> }
 
@@ -32,10 +33,15 @@ export default async function ProjectPage({ params }: Props) {
           <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size figure for ${project.title}`}>
             <img src={project.image} alt={project.imageAlt} className="h-auto w-full" />
           </a>
+          <figcaption className="px-6 py-4 text-sm leading-relaxed text-muted-foreground">{project.imageCaption}</figcaption>
         </figure>
         <section aria-labelledby="overview" className="rounded-xl border border-border bg-card p-8 text-card-foreground">
-          <h2 id="overview" className="mb-4 text-2xl font-semibold">Research overview</h2>
-          <p className="leading-relaxed">{project.details}</p>
+          <h2 id="overview" className="mb-4 text-2xl font-semibold">The question</h2>
+          <p className="leading-relaxed">{project.question}</p>
+          <h2 className="mb-3 mt-8 text-xl font-semibold">My contribution</h2>
+          <p className="leading-relaxed">{project.contribution}</p>
+          <h2 className="mb-3 mt-8 text-xl font-semibold">Why it matters</h2>
+          <p className="leading-relaxed">{project.significance}</p>
           <h2 className="mb-4 mt-8 text-xl font-semibold">Methods & focus</h2>
           <ul className="flex flex-wrap gap-3">{project.tags.map((tag) => <li key={tag} className="rounded-full bg-secondary px-4 py-2 text-sm text-secondary-foreground">{tag}</li>)}</ul>
         </section>
@@ -43,11 +49,13 @@ export default async function ProjectPage({ params }: Props) {
           
           
           <div className="flex flex-wrap gap-6">
-            <a href="https://www.proquest.com/docview/3395749099" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Read the dissertation on ProQuest</a>
-            <a href="/documents/brianna-birkel-resume.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">View resume (PDF)</a>
+            <a href={profile.dissertation} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Read the dissertation</a>
+            {project.codeLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">{link.label}</a>)}
+            <a href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">View CV (PDF)</a>
           </div>
         </section>
       </article>
     </main>
   )
 }
+

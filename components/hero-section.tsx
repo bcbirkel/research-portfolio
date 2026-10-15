@@ -29,7 +29,7 @@ export function HeroSection() {
             {profile.name}
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty leading-relaxed">
-            Computational geophysics Ph.D. bringing a research-driven approach to analyzing complex data, testing and validating models, and clearly communicating scientific results.
+            I use computational models and seismic observations to understand the subsurface and evaluate earthquake ground motion. My work combines data analysis, scientific computing, and model validation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <Button size="lg" asChild>
@@ -53,3 +53,4 @@ export function HeroSection() {
     </section>
   )
 }
+
