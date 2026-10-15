@@ -25,7 +25,6 @@ export function Navigation() {
     { label: "Research", href: "#projects" },
     { label: "CV", href: "#resume" },
     { label: "Teaching", href: "#teaching" },
-    { label: "Contact Me", href: "#links" },
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -63,7 +62,7 @@ export function Navigation() {
               ))}
               <Button asChild size="sm" className="ml-4">
                 <a href="#links" onClick={handleNavClick}>
-                  Get in Touch
+                  Contact Me
                 </a>
               </Button>
             </div>
@@ -108,7 +107,7 @@ export function Navigation() {
                   setIsMobileMenuOpen(false)
                 }}
               >
-                Get in Touch
+                Contact Me
               </a>
             </Button>
           </div>
