@@ -38,8 +38,16 @@ This configuration is for the root user-site URL. Hosting it at `/portfolio/` wo
 ## Content still needing author input
 
 - Replace the explicitly labeled microseismicity schematic with an actual research figure when available.
-- Confirm the precise relationship between GDANT and the Nepal imaging work before adding a stronger method-specific claim; the text currently uses the broader term ambient noise imaging.
-- Add quantitative findings and associated publications to the project pages after checking them against the dissertation or manuscripts.
 - Confirm whether the existing PDF should remain labeled CV or be replaced with separate academic CV and industry résumé downloads. Its original file path is preserved.
 
 The Scholar profile was taken from the existing GitHub Pages site's configuration. The dissertation link uses the USC DOI supplied by the author.
+
+## Content sources and editorial decisions
+
+- Research findings and methods: the author-provided dissertation, *Multiscale Computational Modeling and Seismic Imaging Across Complex Geologic Domains* (2026), Chapters 1–3. Ground-motion findings follow Sections 1.2–1.5; the selected GDANT benchmark values are from Table 2.3, with field interpretation from Section 2.5.3; the Nepal description follows Sections 3.2 and 3.5. [Dissertation DOI](https://doi.org/10.25549/USCTHESES-OUC11399O3HY).
+- The Nepal application explicitly uses the author's GDANT method, as confirmed by the author and Chapter 3. Do not link the private GDANT repository.
+- Microseismicity descriptions are based on the CV and emphasize integration of machine-learning phase picking with association and relocation. No model-training, detection-accuracy, or catalog-size claim is made.
+- Software capabilities follow the public [spatial-vtk README](https://github.com/bcbirkel/spatial-vtk). The software appears in its own homepage section and is linked from ground-motion validation.
+- PHYS 135A teaching experience was supplied by the author. Its title is verified in the [USC Physics course listing](https://dornsife.usc.edu/physics/general-education/).
+- Student reviews, their attribution, and the selection shown by default are restored verbatim from the original portfolio. Do not edit or synthesize testimonial wording.
+- Interface sounds have been removed, including their unused hook and audio implementation.

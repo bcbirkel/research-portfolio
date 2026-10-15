@@ -1,26 +1,19 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { MenuIcon, XIcon } from "./simple-icons"
 import { Button } from "@/components/ui/button"
-import { useSound } from "@/hooks/use-sound"
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { playSound } = useSound()
 
   const navItems = [
     { label: "About", href: "#about" },
     { label: "Research", href: "#projects" },
+    { label: "Software", href: "#software" },
     { label: "CV", href: "#resume" },
     { label: "Teaching", href: "#teaching" },
   ]
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    playSound("pop", 0.3)
-  }
 
   return (
     <>
@@ -32,25 +25,23 @@ export function Navigation() {
             <a
               href="#hero"
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
-              onClick={handleNavClick}
             >
               Brianna Birkel, Ph.D.
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-5">
+            <div className="hidden lg:flex items-center gap-5">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={handleNavClick}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors font-bold"
                 >
                   {item.label}
                 </a>
               ))}
               <Button asChild size="sm">
-                <a href="#links" onClick={handleNavClick}>
+                <a href="#links">
                   Get in touch
                 </a>
               </Button>
@@ -59,11 +50,11 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => {
-                playSound("pop", 0.3)
                 setIsMobileMenuOpen(!isMobileMenuOpen)
               }}
-              className="md:hidden p-2 text-foreground"
+              className="lg:hidden p-2 text-foreground"
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
@@ -73,14 +64,13 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 font-serif bg-background/95 backdrop-blur-lg md:hidden">
+        <div className="fixed inset-0 z-40 font-serif bg-background/95 backdrop-blur-lg lg:hidden">
           <div className="flex flex-col items-center justify-center h-full gap-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => {
-                  handleNavClick(e)
+                onClick={() => {
                   setIsMobileMenuOpen(false)
                 }}
                 className="text-2xl font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -91,8 +81,7 @@ export function Navigation() {
             <Button asChild size="lg" className="mt-4">
               <a
                 href="#links"
-                onClick={(e) => {
-                  handleNavClick(e)
+                onClick={() => {
                   setIsMobileMenuOpen(false)
                 }}
               >
@@ -105,3 +94,4 @@ export function Navigation() {
     </>
   )
 }
+

@@ -3,8 +3,7 @@
     "id": "chapter-1",
     "title": "Validating Ground-Motion Simulations",
     "subtitle": "Ground-motion modeling",
-    "description": "Comparing observed and simulated waveforms to evaluate Southern California Community Velocity Models.",
-    "details": "Developed Python, Bash, and Slurm workflows for 3D spectral-element simulations using Salvus on high-performance computing clusters. The work compared multi-terabyte sets of observed and synthetic waveform data, using a novel goodness-of-fit approach to validate Southern California Community Velocity Models.",
+    "description": "Testing how well Southern California’s 3D velocity models reproduce observed shaking, from regional patterns to basin amplification and surface-wave arrivals.",
     "image": "/images/basin-amplification.png",
     "imageAlt": "Observed and simulated basin/reference PSA amplification versus period in Los Angeles, San Fernando, San Gabriel, and Chino, with 95% event-bootstrap confidence intervals.",
     "imageCaption": "Basin amplification: observations compared with CVM-H and CVM-SI.",
@@ -14,17 +13,57 @@
       "HPC"
     ],
     "featured": true,
-    "question": "How well do 3D velocity models reproduce observed ground motion in Southern California’s sedimentary basins?",
-    "contribution": "I developed Python, Bash, and Slurm workflows to run Salvus simulations on high-performance computing clusters and compare simulated waveforms with observations. The analysis evaluates model performance across stations and measures of ground motion.",
-    "significance": "Comparisons with observations identify where a velocity model is useful and where it needs improvement. The basin-amplification figure provides one view of those differences across period and basin.",
-    "codeLinks": []
+    "question": "Where do widely used 3D velocity models reproduce observed ground motion, and which physical features explain their failures?",
+    "significance": "The study provides specific benchmarks for improving velocity models and evaluating their use in hazard assessment. A useful model update should improve the waveform feature and region it targets without hiding poorer performance elsewhere.",
+    "benchmarks": [],
+    "findingsTitle": "Key findings",
+    "studyDesign": "I designed and conducted a validation study of CVM-SI and CVM-H using 3D spectral-element simulations of more than 15,000 seismic records. I developed the Python, Bash, and Slurm workflows for waveform processing, simulation, and quantitative comparison, then examined model performance by location, period, and waveform characteristic.",
+    "findings": [
+      {
+        "title": "Model rankings depend on what is measured",
+        "text": "Both models reproduce the broad pattern of stronger shaking in basins, but their agreement with observations changes with location, period, and diagnostic. A single overall score conceals these differences."
+      },
+      {
+        "title": "Basin amplification has distinct biases",
+        "text": "CVM-SI generally overamplifies peak and spectral accelerations in the Los Angeles and San Gabriel basins. CVM-H generally underamplifies peak acceleration and more closely matches the observed Los Angeles response-spectral amplification. The same biases do not hold in every basin."
+      },
+      {
+        "title": "Some observed surface waves are missing",
+        "text": "For several earthquakes east of Los Angeles, records at station CI.USC contain a coherent late transverse Love-wave packet that is weak or absent in both sets of simulations."
+      }
+    ],
+    "methods": [
+      {
+        "title": "Compare complementary waveform properties",
+        "text": "I evaluated amplitude, timing, waveform similarity, and shaking duration rather than relying on a single goodness-of-fit measure. Matching simulation settings between models helps isolate the effect of their different velocity structures."
+      },
+      {
+        "title": "Separate basin response from source and distance",
+        "text": "I compared basin stations with matched outside-basin references and examined source-direction dependence. This helps distinguish regional trends from local basin behavior without assuming that all path effects have been removed."
+      },
+      {
+        "title": "Translate mismatches into testable model changes",
+        "text": "I compared the wavefield diagnostics with independent structural constraints, including gravity-derived basin geometry. Missing arrivals can motivate tests of basin edges and connected low-velocity paths, while amplitude and duration biases require separate evaluation."
+      }
+    ],
+    "interpretation": "These results identify validation targets, not a unique cause for every mismatch. Source assumptions, the imposed minimum shear-wave velocity, attenuation, and uneven event coverage also affect the simulations.",
+    "sourceNote": "Dissertation, Chapter 1, especially Sections 1.2–1.5.",
+    "codeLinks": [
+      {
+        "label": "spatial-vtk source code",
+        "href": "https://github.com/bcbirkel/spatial-vtk"
+      },
+      {
+        "label": "spatial-vtk documentation",
+        "href": "https://bcbirkel.github.io/spatial-vtk/"
+      }
+    ]
   },
   {
     "id": "chapter-2",
     "title": "Generalized Differential Ambient Noise Tomography",
     "subtitle": "Tomographic method development",
-    "description": "A mathematical framework for differential ambient noise tomographic imaging, evaluated with synthetic benchmarks.",
-    "details": "Developed generalized differential ambient noise tomography, a mathematical framework for imaging subsurface structure from differential measurements of ambient seismic noise. Synthetic benchmarks were used to evaluate model recovery and compare the framework with traditional approaches.",
+    "description": "A seismic imaging method I developed to combine ambient noise measurements into constraints focused on a chosen region of the subsurface.",
     "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ambient_noise_cross_correlation_cartoon_new-ZJtWlfBhthrKYLIJ6xZOtHdPB41cOH.png",
     "imageAlt": "Ambient noise from ocean microseisms reaches two seismic stations; cross-correlation of the station records reveals a time lag.",
     "imageCaption": "Ambient-noise cross-correlation between two seismic stations.",
@@ -34,22 +73,61 @@
       "Synthetic Benchmarks"
     ],
     "featured": true,
-    "question": "How can differential ambient noise measurements improve estimates of subsurface structure?",
-    "contribution": "I developed the mathematical framework and evaluated it using synthetic benchmarks, connecting inverse-problem formulation with quantitative tests of model recovery.",
-    "significance": "Synthetic tests allow the recovered structure to be compared with a known input model. They provide a controlled way to evaluate the method’s strengths and limitations before interpreting field observations.",
-    "codeLinks": [
+    "question": "Can we design combinations of ambient noise measurements that retain sensitivity to a target while reducing unwanted sensitivity and shared errors?",
+    "significance": "GDANT makes measurement design part of the imaging problem. It provides a way to tailor the available seismic information to a specific structural question while explicitly accounting for shared errors and uncertainty.",
+    "benchmarks": [
       {
-        "label": "Explore GDANT code",
-        "href": "https://github.com/bcbirkel/GDANT"
+        "model": "Layered velocity gradient",
+        "direct": "0.268",
+        "ddant": "0.153",
+        "gdant": "0.110"
+      },
+      {
+        "model": "Two-layer sloping interface",
+        "direct": "0.374",
+        "ddant": "0.206",
+        "gdant": "0.158"
       }
-    ]
+    ],
+    "findingsTitle": "Key findings",
+    "studyDesign": "I developed generalized differential ambient noise tomography (GDANT), from its mathematical formulation to its implementation and validation. The method uses sensitivity kernels to design combinations of measurements across paths and frequencies, with constraints on stability and propagated uncertainty. I evaluated it with synthetic recovery tests, directional source-bias experiments, and a field-data application in the Los Angeles basins.",
+    "findings": [
+      {
+        "title": "Designed measurements improve selected noisy inversions",
+        "text": "GDANT reduced model-recovery error relative to direct ANT and fixed double differences in the tested noisy layered and sloping-interface examples. Clean measurements often favored direct or hybrid inversions, so the benefit depends on the data and target."
+      },
+      {
+        "title": "Field results agree with an independent structural constraint",
+        "text": "Along the BASIN array’s SB1 profile, the hybrid inversion recovered a deepening low-velocity basin consistent with an independent gravity-derived profile. The gravity result was used for comparison, not imposed on the inversion."
+      },
+      {
+        "title": "Uncertainty must follow the measurement combinations",
+        "text": "Differential measurements can share information. Propagating their covariance is essential to prevent repeated information from being overweighted and to distinguish targeted sensitivity from new independent observations."
+      }
+    ],
+    "methods": [
+      {
+        "title": "Design sensitivity around the scientific target",
+        "text": "Rather than restricting every observation to a single station pair or fixed pairwise difference, I optimize combinations from a screened measurement bank. The design balances target sensitivity, unwanted sensitivity outside the target, coefficient size, and measurement uncertainty."
+      },
+      {
+        "title": "Retain direct measurements as absolute constraints",
+        "text": "A hybrid inversion combines direct observations with the designed differential constraints. Direct observations retain absolute information, while GDANT emphasizes localized structure or suppresses shared nuisance contributions."
+      },
+      {
+        "title": "Test recovery, source bias, and field plausibility separately",
+        "text": "Synthetic models provide a known reference for recovery error. Directional perturbations test sensitivity to shared noise-source errors. The BASIN application tests whether the recovered structure is consistent with independent geophysical observations."
+      }
+    ],
+    "interpretation": "GDANT cannot recover information absent from the available measurements. Its performance depends on path coverage, phase stability, regularization, and correct uncertainty propagation; it is not a universal replacement for direct ambient noise tomography.",
+    "sourceNote": "Dissertation, Chapter 2; benchmark values from Table 2.3. Field comparison in Section 2.5.3.",
+    "codeLinks": []
   },
   {
     "id": "nepal-subsurface",
     "title": "Shallow Subsurface Imaging in the Nepal Himalaya",
     "subtitle": "Dense-array seismology",
-    "description": "Applying ambient noise imaging to characterize shallow structure relevant to fluid flow and landslide processes.",
-    "details": "As part of a multi-year NSF research project, I used ambient noise imaging to characterize shallow subsurface structure in the Nepal Himalaya. This work connects seismic imaging with questions about fluid flow and landslide processes in a multidisciplinary collaboration.",
+    "description": "Applying my GDANT method to dense seismic observations to image shallow structure beneath the Melamchi Valley and investigate its links to mountain hydrology.",
     "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/inverted_ridgeline_profile-5wza0cAQtY0mD2svrjDEnH6WyFwfum.png",
     "imageAlt": "Shear-wave velocity cross-section along the ridgeline north of Melamchi, showing elevation, seismic stations, and labeled settlements.",
     "imageCaption": "Inverted shear-wave velocity profile along the Himalayan ridgeline.",
@@ -59,17 +137,48 @@
       "Landslides"
     ],
     "featured": true,
-    "question": "What can dense seismic observations reveal about shallow structure in a steep mountain landscape?",
-    "contribution": "I applied ambient noise imaging to characterize shallow subsurface structure and worked with collaborators to connect the seismic observations with hydrological and geomorphic questions.",
-    "significance": "The velocity cross-section provides a spatial view of subsurface variability. Interpreting this structure alongside other observations helps investigate possible connections between the subsurface, fluid flow, and landsliding.",
+    "question": "How does subsurface structure vary beneath a Himalayan ridge, and how do those variations relate to fracturing, weathering, and the scale of observation?",
+    "significance": "The study connects near-surface measurements with structure at the scale of an entire ridge. That intermediate view helps investigate how rock condition, long-term tectonic forcing, and short-lived hydrological events interact in a steep mountain landscape.",
+    "benchmarks": [],
+    "findingsTitle": "Key findings",
+    "studyDesign": "I designed and carried out the seismic imaging study using the GDANT method I developed. I applied it to continuous records from 165 three-component geophones in the Melamchi Valley, using topographic forward modeling, finite-frequency sensitivity kernels, and iterative inversion to recover a shear-wave velocity profile. Within the wider multidisciplinary project, I compared the seismic model with shallow geophysical measurements, laboratory properties, borehole observations, and regional exhumation studies.",
+    "findings": [
+      {
+        "title": "The ridge has distinct shallow and deeper structure",
+        "text": "A low-velocity layer follows the surface and thickens toward the northern ridge, extending several hundred meters deep. A localized faster body beneath Sermathang and faster material below the northern layer show that the ridge is more complex than a single lateral trend."
+      },
+      {
+        "title": "Different observation scales reveal different patterns",
+        "text": "Very shallow observations emphasize loose soil and weathered material toward the south, while the longer-wavelength seismic model emphasizes the deeper ridge interior. These contrasting trends reflect the different rock volumes sampled."
+      },
+      {
+        "title": "Fracturing is a supported interpretation, not a unique answer",
+        "text": "The northern low-velocity body is consistent with distributed fracture damage when considered alongside borehole and regional evidence. Weathering, fluids, fabric, and lithology can also lower velocity and are not uniquely separable from this model alone."
+      }
+    ],
+    "methods": [
+      {
+        "title": "Select consistent phase measurements",
+        "text": "The workflow combines frequency–time analysis, Fourier phase, and graph comparisons to select a coherent dispersive arrival across frequency and space. The selected wave packet and phase cycle define the feature tracked by the inversion."
+      },
+      {
+        "title": "Account for topography and finite-frequency sensitivity",
+        "text": "Forward and adjoint simulations provide synthetic phase times and sensitivity kernels. GDANT measurement combinations and their covariance enter the Bayesian model update; new forward simulations evaluate the updated models against held-out observations."
+      },
+      {
+        "title": "Measure resolution before interpreting structure",
+        "text": "Point-spread tests spread compact anomalies over approximately 1.1–1.3 km laterally and 0.3–0.5 km vertically. The broad northern anomaly spans several resolution widths, while thin surface layers and sharp boundaries remain smoothed."
+      }
+    ],
+    "interpretation": "Shear-wave velocity is sensitive to several material properties. The model supports broad structural contrasts; it does not uniquely determine fracture density, water content, or landslide susceptibility.",
+    "sourceNote": "Dissertation, Chapter 3, especially Sections 3.2 and 3.5.",
     "codeLinks": []
   },
   {
     "id": "himalayan-microseismicity",
     "title": "Locating Himalayan Microseismicity",
     "subtitle": "Earthquake catalog development",
-    "description": "Combining machine learning–based phase picking, association, and relocation to locate small earthquakes.",
-    "details": "Developed a workflow for locating small earthquakes in the Nepal Himalaya using machine learning–based seismic phase picking, association, and double-difference relocation.",
+    "description": "An earthquake-catalog workflow combining machine learning–based phase detection with association and relocation of small Himalayan earthquakes.",
     "image": "/images/microseismicity-catalog.png",
     "imageAlt": "Placeholder schematic of seismic phase picks and earthquake locations, not actual research data.",
     "imageCaption": "Placeholder illustration · not research data.",
@@ -79,9 +188,37 @@
       "Earthquake Location"
     ],
     "featured": true,
-    "question": "How can continuous seismic records be turned into a catalog of small earthquakes?",
-    "contribution": "I combined phase picking, association, and relocation to turn waveform observations into earthquake locations. The workflow brings together seismic signal analysis and computational processing.",
-    "significance": "An earthquake catalog provides a basis for studying the spatial distribution of seismicity. Interpreting individual events in relation to faults requires evaluating location uncertainty and the available geological constraints.",
+    "question": "How can machine learning help extract small-earthquake signals from continuous seismic data and turn detections into physically interpretable event locations?",
+    "significance": "This project demonstrates how I integrate machine-learning tools into a scientific analysis: converting automated detections into a structured data product that can support questions about the distribution of seismicity.",
+    "benchmarks": [],
+    "findingsTitle": "Workflow highlights",
+    "studyDesign": "I developed the earthquake-catalog workflow, integrating machine learning–based seismic phase picking with phase association and double-difference relocation. I used machine learning to identify candidate arrivals in waveform records, then connected those outputs to the seismological steps needed to group detections into events and refine their locations.",
+    "findings": [
+      {
+        "title": "Machine learning at the detection stage",
+        "text": "Automated phase picking identifies candidate seismic arrivals in continuous waveform data, providing inputs for the catalog-building workflow."
+      },
+      {
+        "title": "Connect detections across stations",
+        "text": "Phase association groups arrivals that can be explained by a common earthquake. This connects individual machine-learning picks to event-level observations."
+      },
+      {
+        "title": "Refine the spatial pattern of seismicity",
+        "text": "Double-difference relocation uses relative arrival-time information to refine the locations of nearby earthquakes, linking automated detection with a geophysical interpretation of the catalog."
+      }
+    ],
+    "methods": [
+      {
+        "title": "From waveform data to a research product",
+        "text": "The study combines machine-learning outputs, signal analysis, and earthquake-location methods in one workflow. Each stage has a distinct role: finding arrivals, identifying events, and estimating their locations."
+      },
+      {
+        "title": "Keep detection and interpretation separate",
+        "text": "A candidate phase pick is not itself an earthquake location. Association and relocation provide the physical relationships needed to interpret detections across a seismic network."
+      }
+    ],
+    "interpretation": "Catalog completeness and location precision require separate evaluation. An event location alone is insufficient to assign an earthquake to a specific fault without considering uncertainty and independent structural information.",
+    "sourceNote": "Project overview based on the research experience described in my CV.",
     "codeLinks": []
   }
 ]

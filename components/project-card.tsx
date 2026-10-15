@@ -1,11 +1,8 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowUpRightIcon } from "./simple-icons"
-import { useSound } from "@/hooks/use-sound"
 
 interface Project {
   id: string
@@ -24,10 +21,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const { playSound } = useSound()
-
   return (
-    <Card className="research-card group relative h-full overflow-hidden pt-0 transition-shadow hover:shadow-lg" onMouseEnter={() => playSound("hover", 0.2)}>
+    <Card className="research-card group relative h-full overflow-hidden pt-0 transition-shadow hover:shadow-lg">
       <figure className="border-b border-border">
         <div className="relative aspect-[16/10] bg-card text-card-foreground">
           <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(min-width: 768px) 50vw, 100vw" className="object-contain p-3" />
