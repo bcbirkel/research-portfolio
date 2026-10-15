@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { Card } from "@/components/ui/card"
+import Link from "next/link"
+import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowUpRightIcon } from "./simple-icons"
-import { useState } from "react"
 import { useSound } from "@/hooks/use-sound"
 
 interface Project {
@@ -13,6 +13,8 @@ interface Project {
   subtitle: string
   description: string
   image: string
+  imageAlt: string
+  imageCaption: string
   tags: string[]
 }
 
@@ -21,65 +23,30 @@ interface ProjectCardProps {
   featured?: boolean
 }
 
-export function ProjectCard({ project, featured = false }: ProjectCardProps) {
-  const [isHovered, setIsHovered] = useState(false)
+export function ProjectCard({ project }: ProjectCardProps) {
   const { playSound } = useSound()
 
   return (
-    <Card
-      className={`group relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl border-border ${
-        featured ? "h-full" : "h-[400px]"
-      }`}
-      onMouseEnter={() => {
-        setIsHovered(true)
-        playSound("hover", 0.2)
-      }}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Image */}
-      <div className="relative w-full h-full">
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          fill
-          className={`object-cover transition-transform duration-500 ${isHovered ? "scale-105" : "scale-100"}`}
-        />
-
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent transition-opacity duration-300 ${
-            isHovered ? "opacity-100" : "opacity-90"
-          }`}
-        />
-
-        {/* Content */}
-        <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-          <div className="space-y-3">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm text-primary font-medium mb-1">{project.subtitle}</p>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-balance"><a href={`/projects/${project.id}`} className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-ring">{project.title}</a></h3>
-              </div>
-              <ArrowUpRightIcon
-                className={`text-primary transition-transform duration-300 w-6 h-6 ${
-                  isHovered ? "translate-x-1 -translate-y-1" : ""
-                }`}
-              />
-            </div>
-
-            <p className="text-muted-foreground leading-relaxed text-pretty">{project.description}</p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {project.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
+    <Card className="group relative h-full overflow-hidden pt-0 transition-shadow hover:shadow-lg" onMouseEnter={() => playSound("hover", 0.2)}>
+      <figure className="border-b border-border">
+        <div className="relative aspect-[16/10] bg-card text-card-foreground">
+          <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(min-width: 768px) 50vw, 100vw" className="object-contain p-3" />
         </div>
-      </div>
+        <figcaption className="px-6 py-3 text-sm leading-relaxed text-muted-foreground">{project.imageCaption}</figcaption>
+      </figure>
+      <CardHeader>
+        <p className="text-sm font-medium text-primary">{project.subtitle}</p>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="text-2xl font-bold tracking-tight text-balance">
+            <Link href={`/projects/${project.id}`} className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-ring">{project.title}</Link>
+          </h3>
+          <ArrowUpRightIcon className="size-6 shrink-0 text-primary" />
+        </div>
+      </CardHeader>
+      <CardContent><p className="leading-relaxed text-pretty">{project.description}</p></CardContent>
+      <CardFooter className="mt-auto flex flex-wrap gap-2">
+        {project.tags.map((tag) => <Badge key={tag} variant="secondary" className="text-sm">{tag}</Badge>)}
+      </CardFooter>
     </Card>
   )
 }

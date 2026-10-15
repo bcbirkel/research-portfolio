@@ -28,6 +28,12 @@ export default async function ProjectPage({ params }: Props) {
           <h1 className="mb-6 text-balance text-4xl font-bold leading-tight md:text-5xl">{project.title}</h1>
           <p className="text-xl leading-relaxed text-muted-foreground">{project.description}</p>
         </header>
+        <figure className="mb-10 overflow-hidden rounded-xl border border-border bg-card text-card-foreground">
+          <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size figure for ${project.title}`}>
+            <img src={project.image} alt={project.imageAlt} className="h-auto w-full" />
+          </a>
+          <figcaption className="p-4 text-sm leading-relaxed">{project.imageCaption} <span className="text-muted-foreground">Select the figure to view full size.</span></figcaption>
+        </figure>
         <section aria-labelledby="overview" className="rounded-xl border border-border bg-card p-8 text-card-foreground">
           <h2 id="overview" className="mb-4 text-2xl font-semibold">Research overview</h2>
           <p className="leading-relaxed">{project.details}</p>

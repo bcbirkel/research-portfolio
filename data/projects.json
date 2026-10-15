@@ -5,7 +5,9 @@
     "subtitle": "Ground-motion modeling",
     "description": "Comparing observed and simulated waveforms to evaluate Southern California Community Velocity Models.",
     "details": "Developed Python, Bash, and Slurm workflows for 3D spectral-element simulations using Salvus on high-performance computing clusters. The work compared multi-terabyte sets of observed and synthetic waveform data, using a novel goodness-of-fit approach to validate Southern California Community Velocity Models.",
-    "image": "/images/chapter-ground-motion.png",
+    "image": "/images/basin-amplification.png",
+    "imageAlt": "Observed and simulated basin/reference PSA amplification versus period in Los Angeles, San Fernando, San Gabriel, and Chino, with 95% event-bootstrap confidence intervals.",
+    "imageCaption": "Basin amplification: observations compared with CVM-H and CVM-SI.",
     "tags": ["Python", "Model Validation", "HPC"],
     "featured": true
   },
@@ -15,17 +17,21 @@
     "subtitle": "Tomographic method development",
     "description": "A mathematical framework for differential ambient noise tomographic imaging, evaluated with synthetic benchmarks.",
     "details": "This chapter develops generalized differential ambient noise tomography as a theoretical imaging method. Synthetic benchmarks were used to test the framework and demonstrate reduced model recovery error relative to traditional methods. The work connects mathematical method development, inverse problems, and quantitative assessment of model recovery. The method was also applied within a multi-year NSF research project in the Nepal Himalaya.",
-    "image": "/images/gdant-method.png",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ambient_noise_cross_correlation_cartoon_new-ZJtWlfBhthrKYLIJ6xZOtHdPB41cOH.png",
+    "imageAlt": "Ambient noise from ocean microseisms reaches two seismic stations; cross-correlation of the station records reveals a time lag.",
+    "imageCaption": "Ambient-noise cross-correlation between two seismic stations.",
     "tags": ["Inverse Problems", "Ambient Noise", "Synthetic Benchmarks"],
     "featured": true
   },
   {
     "id": "nepal-subsurface",
     "title": "Shallow Subsurface Imaging in the Nepal Himalaya",
-    "subtitle": "Shallow subsurface imaging",
+    "subtitle": "Dense-array seismology",
     "description": "Applying ambient noise imaging to characterize shallow structure relevant to fluid flow and landslide processes.",
     "details": "As part of a multi-year NSF research project, the differential ambient noise imaging method was applied to characterize shallow subsurface structure in the Nepal Himalaya. This work connects seismic imaging with questions about fluid flow and landslide processes, within multidisciplinary research spanning Earth and environmental sciences.",
-    "image": "/images/chapter-himalaya.png",
+    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/inverted_ridgeline_profile-5wza0cAQtY0mD2svrjDEnH6WyFwfum.png",
+    "imageAlt": "Shear-wave velocity cross-section along the ridgeline north of Melamchi, showing elevation, seismic stations, and labeled settlements.",
+    "imageCaption": "Inverted shear-wave velocity profile along the Himalayan ridgeline.",
     "tags": ["Seismic Imaging", "Hydrology", "Landslides"],
     "featured": true
   },
@@ -36,6 +42,8 @@
     "description": "Combining machine learning–based phase picking, association, and relocation to locate small earthquakes.",
     "details": "Developed an earthquake catalog locating microseismicity on the Main Himalayan Fault. The workflow combined machine learning–based seismic phase picking with association and double-difference relocation. It brings together seismic signal analysis and computational processing to turn waveform observations into earthquake locations.",
     "image": "/images/microseismicity-catalog.png",
+    "imageAlt": "Placeholder schematic of seismic phase picks and earthquake locations, not actual research data.",
+    "imageCaption": "Placeholder illustration · not research data.",
     "tags": ["Machine Learning", "Signal Analysis", "Earthquake Location"],
     "featured": true
   }
