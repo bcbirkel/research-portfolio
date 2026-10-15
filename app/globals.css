@@ -120,6 +120,13 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+.research-paper {
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--accent) 22%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -28,16 +28,19 @@ export function HeroSection() {
           </p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-balance">
             {profile.name}
-            <br />
-            <span className="text-primary">Seismologist</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 text-balance leading-relaxed">
-            Modeling how complex geology shapes earthquake ground motion, from the Los Angeles Basin to the Nepal
-            Himalaya.
+          <p className="text-2xl sm:text-3xl md:text-4xl text-primary mb-6 text-balance leading-snug">
+            Making sense of complex data.
+          </p>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 text-pretty leading-relaxed">
+            I bring a research-driven approach to analyzing data, testing models, and communicating results—with a foundation in computational geophysics.
+          </p>
+          <p className="text-sm sm:text-base text-muted-foreground mb-10 text-balance leading-relaxed">
+            Exploring opportunities in data analysis, AI evaluation, and geophysics.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild>
-              <a href="#projects">Explore my research</a>
+              <a href="#projects">Explore my work</a>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-transparent">
               <a href="#resume">View resume</a>

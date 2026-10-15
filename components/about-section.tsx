@@ -2,11 +2,11 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 
 const researchInterests = [
-  "Seismic wave amplification",
-  "Ground motion simulation",
-  "Waveform tomography",
-  "Sedimentary basins",
-  "Seismic hazard",
+  "Data analysis",
+  "Numerical modeling",
+  "Model–data comparison",
+  "Computational geophysics",
+  "Scientific communication",
   "High-performance computing",
 ]
 
@@ -19,7 +19,7 @@ export function AboutSection() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">About Me</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
               <p className="text-pretty">
-                {"Hi! I'm Brianna Birkel, a seismologist who recently completed my Ph.D. in Earth Sciences at the University of Southern California under the direction of John Vidale."}
+                {"I'm Brianna Birkel, a researcher with a Ph.D. in Earth Sciences from the University of Southern California. I use observational data and computational models to investigate complex problems, assess evidence, and communicate what the results mean."}
               </p>
               <p className="text-pretty">
                 My research focuses on seismic wave amplification in the Los Angeles Basin, using observational data,
@@ -28,15 +28,13 @@ export function AboutSection() {
                 Nepal Himalaya.
               </p>
               <p className="text-pretty">
-                My work combines geophysics, seismology, and computational methods, and often involves collaboration
-                with researchers from geology to civil engineering. I&apos;m also passionate about teaching and enjoy
-                finding ways to make complex concepts clear and engaging for students.
+                I&apos;m interested in bringing this analytical approach to data analysis, AI evaluation, and geophysics roles. My research and teaching have emphasized comparing models with observations, working across disciplines, and making technical ideas accessible.
               </p>
             </div>
 
             <div className="pt-4">
               <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground mb-3">
-                Research Interests
+                Methods & strengths
               </h3>
               <ul className="flex flex-wrap gap-2">
                 {researchInterests.map((interest) => (

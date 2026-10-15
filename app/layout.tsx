@@ -9,9 +9,9 @@ const _francoisOne = V0_Font_Francois_One({ subsets: ['latin'], weight: ["400"] 
 const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 
 export const metadata: Metadata = {
-  title: "Brianna Birkel - Seismologist",
+  title: "Brianna Birkel | Data Analysis & Computational Research",
   description:
-    "Portfolio of Brianna Birkel, Ph.D. in Earth Sciences (USC), researching seismic wave amplification, ground motion modeling, and seismic imaging in Southern California and the Nepal Himalaya.",
+    "Brianna Birkel, Ph.D.: data analysis, computational modeling, and geophysics research. Exploring opportunities in data analysis, AI evaluation, and geophysics.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-background">
       <body className={`font-sans antialiased`}>{children}</body>
     </html>
   )
