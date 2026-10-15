@@ -127,6 +127,15 @@
   }
 }
 
+#about p,
+#teaching p,
+#teaching blockquote,
+#links p,
+#links .text-muted-foreground {
+  color: color-mix(in oklch, var(--foreground) 85%, var(--muted-foreground));
+  font-weight: 500;
+}
+
 .research-paper {
   position: relative;
   isolation: isolate;

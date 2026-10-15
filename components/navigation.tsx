@@ -34,7 +34,7 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 font-serif transition-all duration-300 ${
           isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
         }`}
       >
@@ -49,7 +49,7 @@ export function Navigation() {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-5">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -60,7 +60,7 @@ export function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <Button asChild size="sm" className="ml-4">
+              <Button asChild size="sm">
                 <a href="#links" onClick={handleNavClick}>
                   Get in touch
                 </a>
@@ -84,7 +84,7 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg md:hidden">
+        <div className="fixed inset-0 z-40 font-serif bg-background/95 backdrop-blur-lg md:hidden">
           <div className="flex flex-col items-center justify-center h-full gap-8">
             {navItems.map((item) => (
               <a
