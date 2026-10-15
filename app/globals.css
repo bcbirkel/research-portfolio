@@ -126,7 +126,8 @@
   background: var(--background);
 }
 
-.research-paper::after {
+.research-paper::after,
+#hero::before {
   content: "";
   position: absolute;
   inset: 0;
