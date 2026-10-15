@@ -45,7 +45,7 @@ export function Navigation() {
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
               onClick={handleNavClick}
             >
-              Brianna Birkel
+              Brianna Birkel, Ph.D.
             </a>
 
             {/* Desktop Navigation */}
