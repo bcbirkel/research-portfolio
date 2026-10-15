@@ -37,7 +37,6 @@ This configuration is for the root user-site URL. Hosting it at `/portfolio/` wo
 
 ## Content still needing author input
 
-- Replace the explicitly labeled microseismicity schematic with an actual research figure when available.
 - Confirm whether the existing PDF should remain labeled CV or be replaced with separate academic CV and industry résumé downloads. Its original file path is preserved.
 
 The Scholar profile was taken from the existing GitHub Pages site's configuration. The dissertation link uses the USC DOI supplied by the author.
@@ -51,3 +50,5 @@ The Scholar profile was taken from the existing GitHub Pages site's configuratio
 - PHYS 135A teaching experience was supplied by the author. Its title is verified in the [USC Physics course listing](https://dornsife.usc.edu/physics/general-education/).
 - Student reviews, their attribution, and the selection shown by default are restored verbatim from the original portfolio. Do not edit or synthesize testimonial wording.
 - Interface sounds have been removed, including their unused hook and audio implementation.
+
+The microseismicity figure is the author's supplied `nepal_seismicity.png`, used unchanged in `public/images/nepal-seismicity.png`.

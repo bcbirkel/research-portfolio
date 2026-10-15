@@ -179,9 +179,9 @@
     "title": "Locating Himalayan Microseismicity",
     "subtitle": "Earthquake catalog development",
     "description": "An earthquake-catalog workflow combining machine learning–based phase detection with association and relocation of small Himalayan earthquakes.",
-    "image": "/images/microseismicity-catalog.png",
-    "imageAlt": "Placeholder schematic of seismic phase picks and earthquake locations, not actual research data.",
-    "imageCaption": "Placeholder illustration · not research data.",
+    "image": "/images/nepal-seismicity.png",
+    "imageAlt": "Earthquake locations in the Nepal Himalaya in four panels: a longitude–latitude map, depth profiles against latitude and longitude, and a three-dimensional view. Points are colored by local magnitude (ML).",
+    "imageCaption": "Nepal earthquake catalog: map view, depth profiles, and a three-dimensional view, colored by local magnitude (ML).",
     "tags": [
       "Machine Learning",
       "Signal Analysis",
