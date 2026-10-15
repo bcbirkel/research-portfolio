@@ -1,34 +1,20 @@
-import timelineData from "@/data/timeline.json"
-import { TimelineItem } from "@/components/timeline-item"
-import { Button } from "@/components/ui/button"
-import { ArrowUpRightIcon } from "./simple-icons"
-import { profile } from "@/lib/profile"
+const resumeUrl = "/documents/brianna-birkel-resume.pdf"
 
 export function TimelineSection() {
   return (
-    <section id="resume" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="resume" aria-labelledby="resume-heading" className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 md:py-32">
       <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Resume</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance mb-6">
-            Education, research, and teaching experience
-          </p>
-          <Button asChild variant="outline" className="gap-2 bg-transparent">
-            <a href={profile.cv} target="_blank" rel="noopener noreferrer">
-              Full CV
-              <ArrowUpRightIcon className="w-4 h-4" />
-            </a>
-          </Button>
-        </div>
-
-        <div className="relative">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-1/2" />
-          <div className="space-y-12">
-            {timelineData.map((item, index) => (
-              <TimelineItem key={item.id} item={item} index={index} />
-            ))}
+        <header className="mb-10 text-center">
+          <h2 id="resume-heading" className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">Resume</h2>
+          <p className="mb-6 text-lg leading-relaxed text-muted-foreground">Brianna C. Birkel, Ph.D. · October 2026</p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-primary px-5 py-3 font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Open resume (PDF)</a>
+            <a href={resumeUrl} download="Brianna-Birkel-Resume.pdf" className="rounded-lg border border-border bg-card px-5 py-3 font-medium text-card-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Download resume</a>
           </div>
-        </div>
+        </header>
+        <object data={`${resumeUrl}#view=FitH`} type="application/pdf" aria-label="Brianna Birkel's October 2026 resume" className="h-[75vh] min-h-[480px] w-full rounded-xl border border-border bg-card text-card-foreground md:h-[900px]">
+          <p className="p-8 text-center leading-relaxed">Your browser cannot display this PDF inline. <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Open the resume in a new tab</a>.</p>
+        </object>
       </div>
     </section>
   )
