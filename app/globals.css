@@ -132,10 +132,10 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: url('/images/paper-grain.png') repeat;
-  background-size: 480px 480px;
-  mix-blend-mode: soft-light;
-  opacity: 0.18;
+  background: url('/images/paper-grain.svg') repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
 }
 
 #hero {
