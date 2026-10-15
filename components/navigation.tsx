@@ -2,29 +2,20 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { MenuIcon, XIcon } from "./simple-icons"
 import { Button } from "@/components/ui/button"
 import { useSound } from "@/hooks/use-sound"
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { playSound } = useSound()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   const navItems = [
     { label: "About", href: "#about" },
     { label: "Research", href: "#projects" },
-    { label: "Resume", href: "#resume" },
-    { label: "Links", href: "#links" },
+    { label: "CV", href: "#resume" },
+    { label: "Teaching", href: "#teaching" },
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -34,9 +25,7 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 font-serif bg-background text-foreground border-b border-border"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -45,11 +34,11 @@ export function Navigation() {
               className="text-xl font-bold tracking-tight hover:text-primary transition-colors"
               onClick={handleNavClick}
             >
-              Brianna Birkel
+              Brianna Birkel, Ph.D.
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-5">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -60,9 +49,9 @@ export function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <Button asChild size="sm" className="ml-4">
+              <Button asChild size="sm">
                 <a href="#links" onClick={handleNavClick}>
-                  Get in Touch
+                  Get in touch
                 </a>
               </Button>
             </div>
@@ -84,7 +73,7 @@ export function Navigation() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg md:hidden">
+        <div className="fixed inset-0 z-40 font-serif bg-background/95 backdrop-blur-lg md:hidden">
           <div className="flex flex-col items-center justify-center h-full gap-8">
             {navItems.map((item) => (
               <a
@@ -107,7 +96,7 @@ export function Navigation() {
                   setIsMobileMenuOpen(false)
                 }}
               >
-                Get in Touch
+                Get in touch
               </a>
             </Button>
           </div>

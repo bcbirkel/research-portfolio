@@ -1,6 +1,6 @@
 export const profile = {
   name: "Brianna Birkel",
-  title: "Seismologist & Computational Geophysicist",
+  title: "Data Analysis & Computational Research",
   affiliation: "Ph.D., Earth Sciences · University of Southern California",
   website: "https://bcbirkel.github.io",
   cv: "https://bcbirkel.github.io/cv/",

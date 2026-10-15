@@ -44,13 +44,16 @@ const links: { label: string; description: string; href: string; icon: ReactNode
 
 export function ContactSection() {
   return (
-    <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-secondary/30">
+    <section id="links" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-background text-foreground">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Find Me Online</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Contact Me</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            {"I'm always happy to talk about seismology, ground motion modeling, teaching, or new collaborations."}
+            {"Let's connect about opportunities in data analysis, AI evaluation, geophysics, or research collaborations."}
           </p>
+          <a href="mailto:birkel@usc.edu" className="mt-6 inline-block text-lg font-medium text-primary underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+            birkel@usc.edu
+          </a>
         </div>
 
         <ul className="grid sm:grid-cols-2 gap-4 mb-16">

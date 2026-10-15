@@ -2,16 +2,16 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 
 import "./globals.css"
-import { Geist_Mono, Francois_One as V0_Font_Francois_One, Geist_Mono as V0_Font_Geist_Mono } from 'next/font/google'
+import { Geist, Roboto_Slab } from 'next/font/google'
 
 // Initialize fonts
-const _francoisOne = V0_Font_Francois_One({ subsets: ['latin'], weight: ["400"] })
-const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' })
+const robotoSlab = Roboto_Slab({ subsets: ['latin'], variable: '--font-roboto-slab', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: "Brianna Birkel - Seismologist",
+  title: "Brianna Birkel | Data Analysis & Computational Research",
   description:
-    "Portfolio of Brianna Birkel, Ph.D. in Earth Sciences (USC), researching seismic wave amplification, ground motion modeling, and seismic imaging in Southern California and the Nepal Himalaya.",
+    "Brianna Birkel, Ph.D.: data analysis, computational modeling, and geophysics research. Exploring opportunities in data analysis, AI evaluation, and geophysics.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.variable} ${robotoSlab.variable} bg-background`}>
       <body className={`font-sans antialiased`}>{children}</body>
     </html>
   )
