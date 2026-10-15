@@ -43,7 +43,7 @@ The Scholar profile was taken from the existing GitHub Pages site's configuratio
 
 ## Content sources and editorial decisions
 
-- Research findings and methods: the author-provided dissertation, *Multiscale Computational Modeling and Seismic Imaging Across Complex Geologic Domains* (2026), Chapters 1–3. Ground-motion findings follow Sections 1.2–1.5; the selected GDANT benchmark values are from Table 2.3, with field interpretation from Section 2.5.3; the Nepal description follows Sections 3.2 and 3.5. [Dissertation DOI](https://doi.org/10.25549/USCTHESES-OUC11399O3HY).
+- Research findings and methods: the author-provided dissertation, *Multiscale Computational Modeling and Seismic Imaging Across Complex Geologic Domains* (2026), Chapters 1–3. Ground-motion findings follow Sections 1.2–1.5; GDANT methods and field interpretation follow Chapter 2 and Section 2.5.3; the current benchmark table uses the defense averages described below; the Nepal description follows Sections 3.2 and 3.5. [Dissertation DOI](https://doi.org/10.25549/USCTHESES-OUC11399O3HY).
 - The Nepal application explicitly uses the author's GDANT method, as confirmed by the author and Chapter 3. Do not link the private GDANT repository.
 - Microseismicity descriptions use the CV and the author-supplied workflow diagram: ObsPy; PhaseNet + REAL or QuakeMigrate; VELEST, Hypoinverse, or a combined location route; and hypoDD. No model-training, detection-accuracy, or catalog-size claim is made.
 - Software capabilities follow the public [spatial-vtk README](https://github.com/bcbirkel/spatial-vtk). The software appears in its own homepage section and is linked from ground-motion validation.
@@ -57,12 +57,14 @@ The author-supplied tectonic-context PDF is rendered at 2400 × 1600 pixels in `
 
 Project pages share a type scale: 24px section headings, 20px subheadings, 18px body and summary text, and 16px captions/tables/source notes. The separate Interpretation and limits blocks have been removed.
 
-### Pending defense material
+### Defense figures and project narratives
 
-The linked `Defense.pptx` (767 MB) exceeds the Drive connector download limit (268 MB), so its slides have not yet been read or incorporated. Request a smaller deck or a PDF plus separate animation files. Preserve the original slide numbers when splitting:
+The four author-uploaded parts were reassembled into the 168-slide defense PowerPoint and its archive integrity was verified. The deck is source material only and is not committed to the website.
 
-- Validation: 10, 14 (animation), 21–22, 29, 32.
-- GDANT: 43, 46 (animation; otherwise 47), 49, 120.
-- Nepal imaging: 56–57, 65 (replace the current profile), 66, 71, 73; methods 128, 132–133.
+- Validation: slide 10 establishes basin/population context; both rotations from slide 14 illustrate the model meshes; slides 21–22 explain metric selection; slide 29 illustrates reference-site amplification; slide 32 links event locations to missing surface-wave packets. Study counts and simulation settings follow slides 18–19.
+- GDANT: slide 43 introduces finite-frequency sensitivity; the embedded animation from slide 46 shows kernel accumulation; slide 47 supplies the static method comparison; slide 49 provides the recovery figure and average NRMSE table; slide 50 adds independent field validation; slide 120 supplies the optimization objective and interpretation of its terms.
+- Nepal: the source figure used on slides 56–57 supplies regional and array context; slide 65 replaces the old profile on the homepage and project page; slide 66 provides shallow velocity measurements; slides 71 and 73 support the stress/fracturing interpretation; slides 128 and 132–133 provide detailed workflow and phase-selection figures.
 
-Review the surrounding explanations as well as the selected figures before updating the scientific narrative. The existing dissertation-based descriptions and Nepal profile remain until those source slides are available.
+Figures were extracted from the original embedded media. For the EMF assets, the embedded PDF representation was extracted and rendered to retain readable scientific labels. Plot images use lossless WebP; map backgrounds use high-quality WebP. Animations are H.264 MP4 with poster frames, explicit playback controls, no autoplay, no audio track, and preload disabled. All figures have descriptive alternative text, captions, and full-size links. Figure provenance and the selected source slide are recorded in data/projects.json.
+
+Project pages present short findings, then figures within the scientific narrative. Each detailed method has its own expandable section. A page navigation bar links directly to the overview, findings, evidence, and methods. The synthetic summary table now reproduces the four-method averages from defense slide 49, replacing the previous selected-case dissertation table.
