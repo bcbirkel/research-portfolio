@@ -51,11 +51,11 @@ export function AboutSection() {
           <div className="md:col-span-2">
             <div className="relative aspect-[3/4] w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-border shadow-2xl">
               <Image
-                src="/images/about-fieldwork.png"
-                alt="Broadband seismometer installed on a hillside overlooking the Los Angeles basin"
+                src="/images/graduation-portrait.jpg"
+                alt="Brianna Birkel in doctoral graduation regalia beside a campus fountain"
                 fill
-                className="object-cover"
-                priority
+                sizes="(min-width: 768px) 384px, 100vw"
+                className="object-cover object-[43%_center]"
               />
             </div>
           </div>
