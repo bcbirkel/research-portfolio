@@ -15,7 +15,7 @@ type ResearchProject = {
   image: string; imageAlt: string; imageCaption: string;
   contextFigures: ResearchFigure[]; methodFigures: ResearchFigure[];
   story?: ResearchSection[]; methods: ResearchSection[];
-  significance: string; sourceNote: string; codeLinks: { label: string; href: string }[];
+  significance: string; dissertationChapter?: number; codeLinks: { label: string; href: string }[];
 }
 const projects: ResearchProject[] = projectData
 const headingClass = "mb-4 text-2xl font-semibold tracking-tight"
@@ -148,9 +148,15 @@ export default async function ProjectPage({ params }: Props) {
             <Paragraphs text={project.significance} />
           </section>
           <footer className="border-t border-border pt-8">
-            <p className="mb-5 text-base leading-relaxed text-muted-foreground">{project.sourceNote}</p>
+            {project.dissertationChapter && (
+              <p className="mb-5 text-base leading-relaxed text-muted-foreground">
+                For more detailed information, see{" "}
+                <a href={profile.dissertation} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+                  Chapter {project.dissertationChapter} of my dissertation
+                </a>.
+              </p>
+            )}
             <div className="flex flex-wrap gap-x-6 gap-y-4">
-              {project.id !== "himalayan-microseismicity" && <a href={profile.dissertation} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Read the dissertation</a>}
               {project.codeLinks.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">{link.label}</a>)}
               <a href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">View CV (PDF)</a>
             </div>

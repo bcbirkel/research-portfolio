@@ -75,7 +75,7 @@
         ]
       }
     ],
-    "sourceNote": "Methods and results are detailed in Chapter 1 of my dissertation.",
+    "dissertationChapter": 1,
     "codeLinks": [
       {
         "label": "spatial-vtk source code",
@@ -226,7 +226,7 @@
         "figures": []
       }
     ],
-    "sourceNote": "Methods and results are detailed in Chapter 2 of my dissertation.",
+    "dissertationChapter": 2,
     "codeLinks": [],
     "contextFigures": [
       {
@@ -396,7 +396,7 @@
         "figures": []
       }
     ],
-    "sourceNote": "Methods and results are detailed in Chapter 3 of my dissertation. Shallow velocity data follow Medwedeff et al. (2022); references for the stress interpretation are included in the figure captions.",
+    "dissertationChapter": 3,
     "codeLinks": [],
     "contextFigures": [
       {
@@ -527,7 +527,6 @@
         "text": "The absolute-location branches feed into hypoDD for double-difference relocation. Relative arrival-time information refines the spatial relationships among nearby events, producing the catalog shown in the map and depth projections."
       }
     ],
-    "sourceNote": "Research experience described in my CV, with the workflow, tectonic-context figure, and earthquake-catalog figure supplied by the author.",
     "codeLinks": [],
     "contextFigures": [
       {
