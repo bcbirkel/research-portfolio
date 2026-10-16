@@ -24,11 +24,11 @@ export function AboutSection() {
               <p className="text-pretty">
                 My research focuses on seismic wave amplification in the Los Angeles Basin, using observational data,
                 numerical modeling, and geophysical analysis to understand how complex subsurface structures affect
-                ground motion and seismic hazard. My dissertation extends these methods from Southern California to the
-                Nepal Himalaya.
+                ground motion and seismic hazard. I also developed generalized differential ambient noise tomography (GDANT), a new seismic
+                imaging method, and used it to study shallow subsurface structure in the Nepal Himalaya.
               </p>
               <p className="text-pretty">
-                My research and teaching have emphasized comparing models with observations, working across disciplines, and making technical ideas accessible. I&apos;m interested in bringing these skills to research scientist roles inside or outside of geophysics, and am looking for a collaborative environment to continue to grow and learn.
+                I enjoy working across disciplines and making technical ideas accessible through research and teaching. I&apos;m interested in research scientist roles inside or outside geophysics where I can build useful models, evaluate them against observations, and collaborate on problems with practical impact.
               </p>
             </div>
 
@@ -64,3 +64,4 @@ export function AboutSection() {
     </section>
   )
 }
+

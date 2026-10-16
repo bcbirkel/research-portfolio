@@ -1,4 +1,5 @@
 const courses = [
+  { code: "PHYS 135A", title: "Physics for the Life Sciences", description: "Introductory mechanics, fluids, waves, and thermodynamics for students in the life sciences and health professions. The course combines quantitative problem solving with laboratory experiments to connect physical principles with observable phenomena." },
   { code: "CORE 103", title: "Processes of Change in Science", description: "Social and economic impacts of natural hazards; the power and limitations of science through a geophysical lens; and the roles of media, government, and lobbyists in hazard response." },
   { code: "GEOL 240", title: "Earthquakes", description: "Causes of earthquakes and the nature of large faults, earthquake hazard and risk, the world’s great earthquakes, and understanding the Richter scale." },
   { code: "GEOL 160", title: "Introduction to Geosystems", description: "Natural geological and environmental systems, their variability, and processes near Earth’s surface in the region that supports most life: the biosphere." },
@@ -16,11 +17,11 @@ const reviews = [
 
 export function TeachingSection() {
   return (
-    <section id="teaching" aria-labelledby="teaching-heading" className="scroll-mt-24 bg-secondary/30 px-4 py-20 sm:px-6 lg:px-8 md:py-32 text-foreground">
+    <section id="teaching" aria-labelledby="teaching-heading" className="scroll-mt-24 bg-background px-4 py-20 sm:px-6 lg:px-8 md:py-32 text-foreground">
       <div className="container mx-auto max-w-5xl">
         <header className="mb-12 max-w-3xl">
         <h2 id="teaching-heading" className="mb-6 text-balance text-4xl font-bold tracking-tight md:text-5xl">Teaching &amp; Mentorship</h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">Teaching is one of my favorite parts of academic life — I love helping students build intuition around complex Earth systems. My approach emphasizes curiosity, real-world relevance, and active engagement. I aim to create an inclusive, supportive learning environment where students feel confident asking questions and exploring ideas.</p>
+          <p className="text-lg leading-relaxed text-muted-foreground">Teaching is one of my favorite parts of academic life. My teaching approach emphasizes curiosity, real-world relevance, active engagement and building intuition around complex systems. I aim to create an inclusive, supportive learning environment where students feel confident asking questions and exploring ideas.</p>
         </header>
         <h3 className="mb-2 text-2xl font-semibold">Courses taught</h3>
         <p className="mb-6 leading-relaxed text-muted-foreground">Teaching assistant · University of Southern California</p>
@@ -36,7 +37,7 @@ export function TeachingSection() {
         <h3 className="mb-6 mt-12 text-2xl font-semibold">In students&apos; words</h3>
         <div className="grid gap-6 md:grid-cols-2">
           {[reviews[0], reviews[3]].map((review) => (
-            <figure key={review.source} className="rounded-xl bg-background p-6 text-foreground">
+            <figure key={review.source} className="rounded-xl border border-border bg-card p-6 text-card-foreground">
               <blockquote className="text-lg leading-relaxed">{`“${review.quote}”`}</blockquote>
               <figcaption className="mt-5 text-sm font-medium text-primary">{review.source}</figcaption>
             </figure>
@@ -57,3 +58,4 @@ export function TeachingSection() {
     </section>
   )
 }
+

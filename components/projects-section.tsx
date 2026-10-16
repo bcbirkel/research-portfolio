@@ -14,7 +14,7 @@ export function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-block mt-4 text-lg font-medium text-primary underline-offset-4 hover:underline"
           >
-            See my full dissertation on ProQuest
+            Read my dissertation
           </a>
         </div>
 
@@ -27,3 +27,4 @@ export function ProjectsSection() {
     </section>
   )
 }
+

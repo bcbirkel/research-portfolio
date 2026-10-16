@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   title: "Brianna Birkel | Data Analysis & Computational Research",
   description:
     "Brianna Birkel, Ph.D.: data analysis, computational modeling, and geophysics research. Exploring opportunities in data analysis, AI evaluation, and geophysics.",
-  generator: "v0.app",
   icons: {
     icon: [
       {
@@ -47,3 +46,4 @@ export default function RootLayout({
     </html>
   )
 }
+

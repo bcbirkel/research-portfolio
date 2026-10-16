@@ -3,48 +3,549 @@
     "id": "chapter-1",
     "title": "Validating Ground-Motion Simulations",
     "subtitle": "Ground-motion modeling",
-    "description": "Comparing observed and simulated waveforms to evaluate Southern California Community Velocity Models.",
-    "details": "Developed Python, Bash, and Slurm workflows for 3D spectral-element simulations using Salvus on high-performance computing clusters. The work compared multi-terabyte sets of observed and synthetic waveform data, using a novel goodness-of-fit approach to validate Southern California Community Velocity Models.",
+    "description": "Testing how well Southern California’s 3D velocity models reproduce observed shaking, from regional patterns to basin amplification and surface-wave arrivals.",
     "image": "/images/basin-amplification.png",
     "imageAlt": "Observed and simulated basin/reference PSA amplification versus period in Los Angeles, San Fernando, San Gabriel, and Chino, with 95% event-bootstrap confidence intervals.",
     "imageCaption": "Basin amplification: observations compared with CVM-H and CVM-SI.",
-    "tags": ["Python", "Model Validation", "HPC"],
-    "featured": true
+    "tags": [
+      "Python",
+      "Model Validation",
+      "HPC"
+    ],
+    "featured": true,
+    "question": "Where do widely used 3D velocity models reproduce observed ground motion, and which physical features explain their failures?",
+    "significance": "The study provides specific benchmarks for improving velocity models and evaluating their use in hazard assessment. A useful model update should improve the waveform feature and region it targets without hiding poorer performance elsewhere.",
+    "findingsTitle": "Key findings",
+    "studyDesign": "I designed and conducted a validation study of CVM-SI and CVM-H using 15,548 seismic records from 188 earthquakes and 1,719 stations. I built the Python, Bash, and Slurm workflows to run 3D spectral-element simulations and compare their output with observed ground motion.\n\nRather than collapsing model performance into one score, I examined amplitude, duration, arrival timing, and waveform shape separately, then investigated how the mismatches vary across Southern California’s basins.",
+    "findings": [
+      {
+        "title": "Model rankings depend on what is measured",
+        "text": "Both models reproduce broad regional patterns, but their agreement with observations changes with location, frequency, and waveform property. Keeping the metrics separate reveals errors that an overall score obscures."
+      },
+      {
+        "title": "Basin amplification has distinct biases",
+        "text": "CVM-SI generally overamplifies peak and spectral accelerations in the Los Angeles and San Gabriel basins. CVM-H generally underamplifies peak acceleration and more closely matches the observed Los Angeles response-spectral amplification. The same biases do not hold in every basin."
+      },
+      {
+        "title": "Some observed surface waves are missing",
+        "text": "For several earthquakes east of Los Angeles, records at station CI.USC contain a coherent late transverse Love-wave packet that is weak or absent in both sets of simulations."
+      }
+    ],
+    "methods": [
+      {
+        "title": "Spectral-element simulation setup",
+        "text": "The simulation domain spans 225 × 130 × 25 km, with a maximum modeled frequency of 1 Hz and a minimum shear-wave speed of 500 m/s. The meshes contain roughly 1.8 million elements. The study required about 2,700 GPU hours on USC’s high-performance computing cluster. Matching the setup between models makes their different velocity structures the central comparison.",
+        "figures": []
+      },
+      {
+        "title": "Choose metrics that measure different waveform properties",
+        "text": "The first matrix shows why averaging many conventional goodness-of-fit metrics can overweight the same underlying amplitude information. I selected peak ground acceleration, Arias duration, Fourier amplitude spectra, travel-time delay, and delay-corrected cross correlation to span a broader set of waveform properties. Pseudo-spectral acceleration supplies an additional quantity relevant to engineering.\n\nThe second matrix shows the reduced overlap among the selected diagnostics, while also making the remaining strong PGA–PSA correlation explicit.",
+        "figures": [
+          {
+            "src": "/images/research/metric-correlation-original.webp",
+            "width": 2200,
+            "height": 1778,
+            "sourceSlide": "21",
+            "alt": "Pearson correlation matrix for conventional ground-motion goodness-of-fit metrics, showing strong correlations among amplitude and energy measures.",
+            "caption": "Conventional metrics often repeat similar information. Metric definitions follow Anderson (2004)."
+          },
+          {
+            "src": "/images/research/metric-correlation-selected.webp",
+            "width": 2200,
+            "height": 1730,
+            "sourceSlide": "22",
+            "alt": "Pearson correlation matrix for PGA, duration, Fourier amplitude spectra, delay, delay-corrected correlation, and PSA.",
+            "caption": "The selected set separates amplitude, timing, duration, and shape more clearly."
+          }
+        ],
+        "layout": "pair"
+      },
+      {
+        "title": "Construct basin-to-reference amplification factors",
+        "text": "For each event, I selected comparable hard-rock stations outside the basin and measured horizontal peak ground acceleration. I corrected for distance differences, formed station-to-reference factors, and aggregated them over basin stations and events. The same comparison framework supports examination of source direction and spectral period. The reference-site approach draws on Boore et al. (2006), Wirth et al. (2019), and Jayaram and Baker (2008).",
+        "figures": [
+          {
+            "src": "/images/research/basin-reference-workflow.webp",
+            "width": 2200,
+            "height": 1812,
+            "sourceSlide": "29",
+            "alt": "Four-stage diagram showing outside-basin reference selection, horizontal PGA measurement, distance correction, and aggregation of amplification factors.",
+            "caption": "The worked example follows the calculation from individual waveforms to an event-level basin amplification factor."
+          }
+        ]
+      }
+    ],
+    "dissertationChapter": 1,
+    "codeLinks": [
+      {
+        "label": "spatial-vtk source code",
+        "href": "https://github.com/bcbirkel/spatial-vtk"
+      },
+      {
+        "label": "spatial-vtk documentation",
+        "href": "https://bcbirkel.github.io/spatial-vtk/"
+      }
+    ],
+    "contextFigures": [
+      {
+        "src": "/images/research/southern-california-basins.webp",
+        "width": 2200,
+        "height": 1345,
+        "sourceSlide": "10",
+        "alt": "Southern California basins, mountains, hills, and valleys overlain with population-density classes.",
+        "caption": "Many densely populated areas occupy sedimentary basins. Their geometry and low-velocity sediments make local wave propagation an important part of evaluating earthquake shaking."
+      }
+    ],
+    "methodFigures": [],
+    "story": [
+      {
+        "title": "Two models represent basin structure differently",
+        "text": "CVM-SI combines a comparatively smooth tomographic model with a shallow geotechnical layer. CVM-H embeds detailed basin structures derived from reflection data within a regional tomographic background. The rotating views show how differently the two meshes represent the same region.",
+        "figures": [
+          {
+            "src": "/images/research/cvm-si-rotation.webp",
+            "video": "/videos/cvm-si-rotation.mp4",
+            "width": 1280,
+            "height": 960,
+            "sourceSlide": "14",
+            "alt": "Rotating three-dimensional view of the CVM-SI simulation mesh, colored by shear-wave speed.",
+            "caption": "CVM-SI: the spatial distribution of shear-wave speed in the spectral-element simulation mesh. The view uses threefold vertical exaggeration."
+          },
+          {
+            "src": "/images/research/cvm-h-rotation.webp",
+            "video": "/videos/cvm-h-rotation.mp4",
+            "width": 1280,
+            "height": 960,
+            "sourceSlide": "14",
+            "alt": "Rotating three-dimensional view of the CVM-H simulation mesh, colored by shear-wave speed.",
+            "caption": "CVM-H: detailed basin geometry contrasts with the surrounding regional structure. The view uses threefold vertical exaggeration."
+          }
+        ],
+        "layout": "pair"
+      },
+      {
+        "title": "Basin amplification exposes local model biases",
+        "text": "I compared basin stations with hard-rock reference stations outside each basin, corrected for distance differences, and combined measurements across events. This isolates basin-scale amplification more clearly than a map of raw amplitudes.\n\nCVM-SI generally overamplifies shaking in the Los Angeles and San Gabriel basins. CVM-H’s performance varies by basin and period, showing why a model that works well in one basin cannot simply be assumed to work equally well in another.",
+        "figures": [
+          {
+            "src": "/images/basin-amplification.png",
+            "alt": "Observed and simulated basin/reference PSA amplification versus period in Los Angeles, San Fernando, San Gabriel, and Chino, with 95% event-bootstrap confidence intervals.",
+            "caption": "Observed and simulated response-spectral amplification relative to outside-basin references. Separating the curves by basin and period makes the model biases visible; intervals show 95% event-bootstrap confidence intervals."
+          }
+        ]
+      },
+      {
+        "title": "Waveforms reveal missing surface-wave arrivals",
+        "text": "At CI.USC, several earthquakes east of Los Angeles produce a late transverse Love-wave packet that is weak or absent in both simulations. The event map links the waveform examples to their source locations. The highlighted intervals identify the arrivals behind the mismatch.\n\nThis is a specific target for model improvement: reproduce the observed surface-wave propagation into the basin, alongside the amplitude and duration constraints.",
+        "figures": [
+          {
+            "src": "/images/research/love-wave-event-map.webp",
+            "width": 2200,
+            "height": 1702,
+            "sourceSlide": "32",
+            "alt": "Map locating CI.USC and six eastern earthquakes labeled A through F.",
+            "caption": "The six source locations correspond to panels A–F in the waveform comparison."
+          },
+          {
+            "src": "/images/research/love-wave-records.webp",
+            "width": 2200,
+            "height": 2200,
+            "sourceSlide": "32",
+            "alt": "Observed, CVM-SI, and CVM-H transverse waveforms for six eastern earthquakes recorded at CI.USC, with late arrivals highlighted.",
+            "caption": "The observed late wave packets persist across multiple eastern sources, while the simulations often fail to reproduce them."
+          }
+        ],
+        "layout": "pair"
+      }
+    ]
   },
   {
     "id": "chapter-2",
     "title": "Generalized Differential Ambient Noise Tomography",
     "subtitle": "Tomographic method development",
-    "description": "A mathematical framework for differential ambient noise tomographic imaging, evaluated with synthetic benchmarks.",
-    "details": "This chapter develops generalized differential ambient noise tomography as a theoretical imaging method. Synthetic benchmarks were used to test the framework and demonstrate reduced model recovery error relative to traditional methods. The work connects mathematical method development, inverse problems, and quantitative assessment of model recovery. The method was also applied within a multi-year NSF research project in the Nepal Himalaya.",
+    "description": "A seismic imaging method I developed to combine ambient noise measurements into constraints focused on a chosen region of the subsurface.",
     "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ambient_noise_cross_correlation_cartoon_new-ZJtWlfBhthrKYLIJ6xZOtHdPB41cOH.png",
     "imageAlt": "Ambient noise from ocean microseisms reaches two seismic stations; cross-correlation of the station records reveals a time lag.",
     "imageCaption": "Ambient-noise cross-correlation between two seismic stations.",
-    "tags": ["Inverse Problems", "Ambient Noise", "Synthetic Benchmarks"],
-    "featured": true
+    "tags": [
+      "Inverse Problems",
+      "Ambient Noise",
+      "Synthetic Benchmarks"
+    ],
+    "featured": true,
+    "question": "Can we design combinations of ambient noise measurements that retain sensitivity to a target while reducing unwanted sensitivity and shared errors?",
+    "significance": "GDANT makes measurement design part of the imaging problem. It provides a way to tailor the available seismic information to a specific structural question while explicitly accounting for shared errors and uncertainty.",
+    "findingsTitle": "Key findings",
+    "studyDesign": "I developed generalized differential ambient noise tomography (GDANT), from its mathematical formulation through implementation and validation. The method chooses weighted combinations of measurements across paths and frequencies so their combined sensitivity emphasizes a chosen subsurface target.\n\nI evaluated the method with synthetic recovery tests, noise and source-bias experiments, and a field application along the BASIN array in Southern California.",
+    "findings": [
+      {
+        "title": "GDANT improves recovery in the noisy synthetic tests",
+        "text": "With 5% added noise, GDANT had the lowest average normalized model error among the four approaches tested. For the noise-free tests, the combined Direct + GDANT approach had the lowest average error."
+      },
+      {
+        "title": "Field results agree with an independent structural constraint",
+        "text": "Along the BASIN array’s SB1 profile, the hybrid inversion recovered a deepening low-velocity basin consistent with an independent gravity-derived profile. The gravity result was used for comparison, not imposed on the inversion."
+      },
+      {
+        "title": "Uncertainty must follow the measurement combinations",
+        "text": "Differential measurements can share information. Propagating their covariance is essential to prevent repeated information from being overweighted and to distinguish targeted sensitivity from new independent observations."
+      }
+    ],
+    "methods": [
+      {
+        "title": "Optimize the measurement weights",
+        "text": "The objective function balances five terms. Target matching makes the combined kernel resemble the desired spatial pattern. A covariance term penalizes amplification of measurement noise. A nuisance-mode term suppresses effects shared by sources or receivers. Sparsity favors combinations that use fewer measurements, and a coefficient-size penalty keeps the weights stable.\n\nThe weights therefore control both where a measurement is sensitive and how errors propagate into it.",
+        "figures": [
+          {
+            "src": "/images/research/gdant-objective.webp",
+            "width": 542,
+            "height": 146,
+            "sourceSlide": "120",
+            "alt": "GDANT objective minimizing target-kernel mismatch plus covariance, nuisance-mode, L1 sparsity, and L2 coefficient-size penalties.",
+            "caption": "The optimization chooses measurement weights a. The target q, sensitivity operator G, measurement covariance C, and nuisance modes B define the scientific and statistical tradeoffs."
+          }
+        ]
+      },
+      {
+        "title": "Compare direct and differential sensitivity",
+        "text": "Direct ANT, fixed double differences, and GDANT operate on the same underlying measurement bank but form different effective kernels. The comparison shows how combining paths changes the volume sampled by each observation. Frequencies add a further way to vary depth sensitivity.",
+        "figures": [
+          {
+            "src": "/images/research/gdant-kernel-comparison.webp",
+            "width": 2200,
+            "height": 1244,
+            "sourceSlide": "47",
+            "alt": "Three rows comparing Direct, DDANT, and GDANT raypath combinations and their summed sensitivity kernels.",
+            "caption": "The final kernels make the distinction between a direct path, a fixed two-path difference, and a designed multi-path combination visible."
+          }
+        ]
+      },
+      {
+        "title": "Carry covariance into the inversion",
+        "text": "Weighted combinations can share measurements and therefore share errors. I propagate the measurement covariance into the designed rows so repeated information receives appropriate weight. Hybrid inversions retain direct observations alongside GDANT rows to preserve absolute constraints while adding the targeted differential measurements.",
+        "figures": []
+      }
+    ],
+    "dissertationChapter": 2,
+    "codeLinks": [],
+    "contextFigures": [
+      {
+        "src": "/images/research/finite-frequency-kernel.webp",
+        "width": 2200,
+        "height": 790,
+        "sourceSlide": "43",
+        "alt": "Comparison of an idealized source-to-receiver raypath with its broad finite-frequency sensitivity kernel.",
+        "caption": "A travel-time measurement samples a finite volume around a path. GDANT uses these sensitivity kernels to design combinations of measurements that emphasize a target region."
+      }
+    ],
+    "methodFigures": [],
+    "story": [
+      {
+        "title": "Design the measurement around the target",
+        "text": "A direct measurement uses one station pair. Double-difference ANT subtracts two measurements sharing a source. GDANT generalizes that idea: it can combine multiple paths and frequencies, choosing their weights to shape the resulting sensitivity.\n\nThe animation shows the effective kernel building up as weighted contributions are added. This makes the scientific target part of measurement design.",
+        "figures": [
+          {
+            "src": "/images/research/gdant-kernel-accumulation.webp",
+            "video": "/videos/gdant-kernel-accumulation.mp4",
+            "width": 1280,
+            "height": 454,
+            "sourceSlide": "46",
+            "alt": "Animation showing weighted seismic paths accumulating into a GDANT sensitivity kernel.",
+            "caption": "As the path contributions accumulate, the combined kernel changes shape. The final measurement is sensitive to the weighted sum of those individual kernels."
+          }
+        ]
+      },
+      {
+        "title": "Test recovery against known synthetic structures",
+        "text": "Synthetic models provide a known answer against which to measure recovery. The example below compares direct ANT, DDANT, GDANT, and the hybrid Direct + GDANT inversion on the same structure.\n\nAcross the synthetic tests, GDANT’s average normalized root-mean-square error was 0.1617 with 5% noise, compared with 0.2640 for direct ANT. In the noise-free case, Direct + GDANT and direct ANT were nearly tied. These comparisons distinguish performance with clean measurements from performance after noise is introduced.",
+        "figures": [
+          {
+            "src": "/images/research/synthetic-recovery.webp",
+            "width": 2200,
+            "height": 1965,
+            "sourceSlide": "49",
+            "alt": "Known synthetic velocity perturbation model and reconstructions using Direct, DDANT, GDANT, and Direct plus GDANT.",
+            "caption": "The common reference model lets the recovered geometry and velocity contrasts be compared directly across methods."
+          }
+        ],
+        "table": {
+          "caption": "Average normalized root-mean-square model error across synthetic tests. Lower values indicate better recovery.",
+          "headers": [
+            "Method",
+            "No added noise",
+            "5% noise"
+          ],
+          "rows": [
+            [
+              "Direct",
+              "0.1170",
+              "0.2640"
+            ],
+            [
+              "DDANT",
+              "0.1979",
+              "0.2104"
+            ],
+            [
+              "GDANT",
+              "0.1507",
+              "0.1617"
+            ],
+            [
+              "Direct + GDANT",
+              "0.1166",
+              "0.2693"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Compare field recovery with independent gravity data",
+        "text": "Along the BASIN array’s SB1 profile, the hybrid inversion recovers deep low-velocity basin structure that is consistent with an independent gravity-derived profile. That gravity constraint was used to evaluate the result, rather than being imposed in the inversion.\n\nThe comparison with existing velocity models shows how the targeted inversion adds detail to the basin geometry.",
+        "figures": [
+          {
+            "src": "/images/research/basin-field-validation.webp",
+            "width": 2200,
+            "height": 1786,
+            "sourceSlide": "50",
+            "alt": "Five shear-wave velocity sections along BASIN SB1 comparing the hybrid GDANT model with other local and regional models, with a gravity-derived profile overlain.",
+            "caption": "The upper panel shows the hybrid GDANT result. The common gravity-derived profile provides an independent structural comparison across all five models. The comparison includes results from Li et al. (2024)."
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "nepal-subsurface",
     "title": "Shallow Subsurface Imaging in the Nepal Himalaya",
     "subtitle": "Dense-array seismology",
-    "description": "Applying ambient noise imaging to characterize shallow structure relevant to fluid flow and landslide processes.",
-    "details": "As part of a multi-year NSF research project, the differential ambient noise imaging method was applied to characterize shallow subsurface structure in the Nepal Himalaya. This work connects seismic imaging with questions about fluid flow and landslide processes, within multidisciplinary research spanning Earth and environmental sciences.",
-    "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/inverted_ridgeline_profile-5wza0cAQtY0mD2svrjDEnH6WyFwfum.png",
-    "imageAlt": "Shear-wave velocity cross-section along the ridgeline north of Melamchi, showing elevation, seismic stations, and labeled settlements.",
-    "imageCaption": "Inverted shear-wave velocity profile along the Himalayan ridgeline.",
-    "tags": ["Seismic Imaging", "Hydrology", "Landslides"],
-    "featured": true
+    "description": "Applying my GDANT method to dense seismic observations to image shallow structure beneath the Melamchi Valley and investigate its links to mountain hydrology.",
+    "image": "/images/research/nepal-ridge-profile.webp",
+    "imageAlt": "Shear-wave velocity beneath the Melamchi ridgeline, with topography, station locations, settlements, and masked regions of low resolution.",
+    "imageCaption": "Shear-wave velocity along the ridgeline. Warmer colors indicate slower material and cooler colors faster material; masked regions have low resolution because of the array geometry.",
+    "tags": [
+      "Seismic Imaging",
+      "Hydrology",
+      "Landslides"
+    ],
+    "featured": true,
+    "question": "How does subsurface structure vary beneath a Himalayan ridge, and how do those variations relate to fracturing, weathering, and the scale of observation?",
+    "significance": "The study connects near-surface measurements with structure at the scale of an entire ridge. That intermediate view helps investigate how rock condition, long-term tectonic forcing, and short-lived hydrological events interact in a steep mountain landscape.",
+    "findingsTitle": "Key findings",
+    "studyDesign": "I designed and carried out the ridge-scale seismic imaging study using the GDANT method I developed. I used continuous records from 165 three-component geophones in the Melamchi Valley, together with topographic forward modeling, finite-frequency kernels, and iterative inversion, to recover a shallow shear-wave velocity profile.\n\nWithin the wider Nepal FRES collaboration, I compared this ridge-scale image with measurements of the upper tens of meters, borehole observations, and regional tectonic and exhumation evidence.",
+    "findings": [
+      {
+        "title": "The ridge interior is faster in the south and slower in the north",
+        "text": "The profile resolves a northern low-velocity layer extending several hundred meters below the surface, alongside faster material at depth and a localized fast body beneath Sermathang."
+      },
+      {
+        "title": "The upper tens of meters show the opposite trend",
+        "text": "Shallow surface-wave measurements generally show slower material toward the south and faster material toward the north. The two methods sample different depths and different rock volumes."
+      },
+      {
+        "title": "Exhumation and fracturing connect the two scales",
+        "text": "I developed a physical explanation in which southern surface weathering and northern fracture damage produce contrasting velocity patterns at shallow and ridge-interior scales."
+      }
+    ],
+    "methods": [
+      {
+        "title": "The imaging workflow",
+        "text": "I begin with stacked ambient-noise cross correlations and identify candidate surface-wave packets. After selecting consistent phase measurements, I use forward and adjoint simulations to compute phase times and finite-frequency sensitivity kernels. GDANT rows and their covariance then enter the Bayesian model update.\n\nThe designed rows are fixed after their initial construction. Each updated model is evaluated with new forward simulations, retaining updates that improve the fit to held-out observations.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-imaging-workflow.webp",
+            "width": 2200,
+            "height": 1069,
+            "sourceSlide": "128",
+            "alt": "Workflow connecting stacked cross correlations, phase picking, fixed measurement definitions, forward and adjoint simulations, GDANT row construction, Bayesian inversion, and held-out validation.",
+            "caption": "The workflow separates phase selection, measurement design, and iterative model updates. GDANT rows are constructed in the first iteration and retained thereafter."
+          }
+        ]
+      },
+      {
+        "title": "Identify coherent wave packets with Fourier phase",
+        "text": "Frequency–time analysis identifies candidate group arrivals. Fourier phase then helps determine which packet contains coherent energy across neighboring frequencies and which phase cycle lies within that packet.\n\nThe schematic shows how removing the phase slope aligns the frequency components when the group-time choice is consistent. Once selected, the packet, phase cycle, taper, frequency band, and Fourier weights define the measurement tracked through the inversion.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-phase-unwrapping.webp",
+            "width": 2200,
+            "height": 1546,
+            "sourceSlide": "132",
+            "alt": "Cross-correlation decomposed into frequency components, with phase-vector rotations comparing correct and incorrect group-time choices.",
+            "caption": "Consistent group timing aligns the phase vectors across frequency. This provides a way to evaluate candidate arrivals before inversion."
+          }
+        ]
+      },
+      {
+        "title": "Resolve phase-cycle ambiguity across frequency and space",
+        "text": "Individual phase-time candidates can differ by whole cycles. I compare candidates across neighboring frequencies and station-pair midpoints, including their propagation directions, to select a coherent dispersive arrival. The graph connects these related measurements so the chosen phase times remain consistent in frequency and space.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-graph-selection.webp",
+            "width": 2200,
+            "height": 1422,
+            "sourceSlide": "133",
+            "alt": "Candidate phase picks and a graph-selected phase-velocity surface plotted against frequency and path midpoint, with causal and acausal picks distinguished.",
+            "caption": "The selected picks form a coherent surface across the measurement bank, rather than a collection of unrelated single-frequency choices."
+          }
+        ]
+      },
+      {
+        "title": "Evaluate spatial resolution",
+        "text": "Point-spread tests characterize how a compact anomaly appears after inversion. The dissertation’s tests give lateral widths of approximately 1.1–1.3 km and vertical widths of 0.3–0.5 km. I use that scale to distinguish broad features of the ridge interior from thin layers and sharp boundaries that the imaging smooths.",
+        "figures": []
+      }
+    ],
+    "dissertationChapter": 3,
+    "codeLinks": [],
+    "contextFigures": [
+      {
+        "src": "/images/research/nepal-array-setting.webp",
+        "width": 2200,
+        "height": 1392,
+        "sourceSlide": "56–57",
+        "alt": "Three-panel map showing the Himalayan collision, central Nepal faults and Gorkha earthquake setting, and the Melamchi nodal array with ridgeline, hillslope, and borehole sites.",
+        "caption": "The maps connect the Himalayan tectonic setting to the local array. The ridgeline deployment and nearby hillslope and borehole observations make it possible to compare structure across spatial scales."
+      }
+    ],
+    "methodFigures": [],
+    "story": [
+      {
+        "title": "Image the ridge below the critical zone",
+        "text": "The GDANT profile fills the gap between very shallow surveys and regional crustal models. It resolves the ridge interior while accounting for the steep surface topography.\n\nThe broad south-to-north contrast is accompanied by local structure: a faster body beneath Sermathang and faster material beneath the northern slow layer. Masked portions of the section identify regions poorly resolved by the array geometry.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-ridge-profile.webp",
+            "width": 2200,
+            "height": 1060,
+            "sourceSlide": "65",
+            "alt": "Shear-wave velocity beneath the Melamchi ridgeline, with topography, station locations, settlements, and masked regions of low resolution.",
+            "caption": "Red and orange mark lower shear-wave speeds, while blue marks higher speeds. The color scale spans 1.4–2.4 km/s. Masked regions have low resolution because of the array geometry. These contrasts extend beneath the near-surface zone sampled by shallow surveys."
+          }
+        ]
+      },
+      {
+        "title": "Compare measurements at different depth scales",
+        "text": "Multichannel analysis of surface waves (MASW) characterizes roughly the upper 15–30 m at individual sites. Those measurements generally show lower velocities in the south and higher velocities in the north. The ridge-scale image shows the opposite broad pattern.\n\nThe contrast is the central observation: near-surface material and the deeper ridge interior record different aspects of rock transformation.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-shallow-velocities.webp",
+            "width": 2200,
+            "height": 1315,
+            "sourceSlide": "66",
+            "alt": "Shallow average shear-wave velocity and Vs30 versus distance north from Melamchi, with higher values at many northern sites.",
+            "caption": "Site-scale MASW measurements provide the shallow comparison to the GDANT profile above. Data are from Medwedeff et al. (2022)."
+          }
+        ]
+      },
+      {
+        "title": "Link the velocity contrasts to rock transformation",
+        "text": "I relate these observations to a northward increase in uplift and exhumation. As rock moves toward the surface, unloading changes the balance between principal stresses. Greater differential stress can promote microcracking and the development of connected fracture networks.\n\nThe stress-history schematic illustrates this mechanism. The interpretation draws on Leith et al. (2014), with the regional section modified from Pandey (1995).",
+        "figures": [
+          {
+            "src": "/images/research/nepal-exhumation-stress.webp",
+            "width": 2200,
+            "height": 1330,
+            "sourceSlide": "71",
+            "alt": "Two schematic exhumation histories showing changes in principal stresses as rock rises toward the surface, producing high versus moderate differential stress.",
+            "caption": "Different exhumation paths produce different stress histories. The proposed mechanism connects tectonic unloading with fracture development in the ridge interior."
+          }
+        ]
+      },
+      {
+        "title": "A physical explanation for the opposite trends",
+        "text": "In the south, loose and weathered surface material can overlie a comparatively competent, faster ridge interior. In the north, exposed rock can be faster than southern soil at the surface while distributed fractures lower the velocity of the larger rock volume below.\n\nThese conceptual sections reconcile the observations at both scales and connect the seismic image to questions about water flow through fractured mountain bedrock.",
+        "figures": [
+          {
+            "src": "/images/research/nepal-southern-concept.webp",
+            "width": 606,
+            "height": 646,
+            "sourceSlide": "73",
+            "alt": "Conceptual southern Melamchi section with slow unconsolidated weathered sediment over faster, less fractured bedrock.",
+            "caption": "Southern ridge: a slow surface layer overlies a comparatively fast interior."
+          },
+          {
+            "src": "/images/research/nepal-northern-concept.webp",
+            "width": 602,
+            "height": 670,
+            "sourceSlide": "73",
+            "alt": "Conceptual northern Melamchi section with highly fractured bedrock and stronger vertical uplift.",
+            "caption": "Northern ridge: exposed fractured rock is faster than loose sediment but slower than competent bedrock."
+          }
+        ],
+        "layout": "pair"
+      }
+    ]
   },
   {
     "id": "himalayan-microseismicity",
     "title": "Locating Himalayan Microseismicity",
     "subtitle": "Earthquake catalog development",
-    "description": "Combining machine learning–based phase picking, association, and relocation to locate small earthquakes.",
-    "details": "Developed an earthquake catalog locating microseismicity on the Main Himalayan Fault. The workflow combined machine learning–based seismic phase picking with association and double-difference relocation. It brings together seismic signal analysis and computational processing to turn waveform observations into earthquake locations.",
-    "image": "/images/microseismicity-catalog.png",
-    "imageAlt": "Placeholder schematic of seismic phase picks and earthquake locations, not actual research data.",
-    "imageCaption": "Placeholder illustration · not research data.",
-    "tags": ["Machine Learning", "Signal Analysis", "Earthquake Location"],
-    "featured": true
+    "description": "An earthquake-catalog workflow combining machine learning–based phase detection with association and relocation of small Himalayan earthquakes.",
+    "image": "/images/nepal-seismicity.png",
+    "imageAlt": "Earthquake locations in the Nepal Himalaya in four panels: a longitude–latitude map, depth profiles against latitude and longitude, and a three-dimensional view. Points are colored by local magnitude (ML).",
+    "imageCaption": "Earthquake locations viewed from the surface, in depth profiles, and in three dimensions. Together, these views show the catalog’s horizontal and vertical distribution; color indicates local magnitude (ML).",
+    "tags": [
+      "Machine Learning",
+      "Signal Analysis",
+      "Earthquake Location"
+    ],
+    "featured": true,
+    "question": "How can machine learning help extract small-earthquake signals from continuous seismic data and turn detections into physically interpretable event locations?",
+    "significance": "This project demonstrates how I integrate machine-learning tools into a scientific analysis: converting automated detections into a structured data product that can support questions about the distribution of seismicity.",
+    "findingsTitle": "Workflow highlights",
+    "studyDesign": "I developed an earthquake-catalog workflow that connects machine learning–based phase picking with phase association, absolute location, and double-difference relocation. The dense seismic array near Melamchi provides observations within the central Nepal Himalaya. I use these records to turn candidate arrivals into an earthquake catalog and examine the distribution of seismicity in its regional tectonic setting.",
+    "findings": [
+      {
+        "title": "Machine learning turns continuous records into phase picks",
+        "text": "PhaseNet identifies candidate seismic arrivals, and REAL associates picks across stations into events. The workflow also includes QuakeMigrate as an alternative detection and location approach."
+      },
+      {
+        "title": "Velocity models connect arrival times to earthquake locations",
+        "text": "The location workflow includes VELEST, Hypoinverse, and a combined approach. VELEST also supports one-dimensional velocity-model inversion, including models with and without a low-velocity zone."
+      },
+      {
+        "title": "Relative locations reveal the catalog’s spatial structure",
+        "text": "Double-difference relocation with hypoDD refines the relative positions of nearby earthquakes. Map, depth, and three-dimensional views then bring the resulting spatial distribution into focus."
+      }
+    ],
+    "methods": [
+      {
+        "title": "1. Prepare continuous waveform data",
+        "text": "I preprocess the continuously recorded seismic data with ObsPy to provide the waveform inputs for phase detection and event association."
+      },
+      {
+        "title": "2. Detect phases and associate events",
+        "text": "The machine-learning branch uses PhaseNet for seismic phase picking and REAL to group arrivals across stations. QuakeMigrate provides an alternative branch of the workflow. These steps connect individual waveform detections to candidate earthquakes."
+      },
+      {
+        "title": "3. Estimate absolute locations and velocity structure",
+        "text": "The workflow includes VELEST, Hypoinverse, and a combined VELEST–Hypoinverse route. In the VELEST branch, earthquake location is paired with one-dimensional velocity inversion, with options that include or omit a low-velocity zone."
+      },
+      {
+        "title": "4. Refine relative locations",
+        "text": "The absolute-location branches feed into hypoDD for double-difference relocation. Relative arrival-time information refines the spatial relationships among nearby events, producing the catalog shown in the map and depth projections."
+      }
+    ],
+    "codeLinks": [],
+    "contextFigures": [
+      {
+        "src": "/images/nepal-tectonic-framework.webp",
+        "alt": "Four-panel tectonic context: the India–Eurasia collision, central Nepal and the 2015 Gorkha earthquake, the nodal array near Melamchi, and published Main Himalayan Thrust geometries.",
+        "caption": "The array connects local earthquake observations to the Himalayan tectonic setting. The panels move from the India–Eurasia collision to central Nepal, the Melamchi-area deployment, and published interpretations of Main Himalayan Thrust geometry. Panel (d) is adapted from Thapa et al. (2023), with the original references retained in the figure.",
+        "width": 2400,
+        "height": 1600
+      }
+    ],
+    "methodFigures": [
+      {
+        "src": "/images/microseismicity-workflow.webp",
+        "alt": "Catalog workflow: ObsPy preprocessing; PhaseNet with REAL or QuakeMigrate; VELEST, Hypoinverse, or a combined absolute-location route; then hypoDD relative relocation.",
+        "caption": "From continuous data to a relocated catalog. The workflow places machine-learning phase picking within a sequence of association, velocity-model and absolute-location calculations, and double-difference relocation. Parallel branches show the alternative approaches included at each stage.",
+        "width": 2048,
+        "height": 618
+      }
+    ],
+    "story": []
   }
 ]
