@@ -17,7 +17,7 @@ const reviews = [
 
 export function TeachingSection() {
   return (
-    <section id="teaching" aria-labelledby="teaching-heading" className="scroll-mt-24 bg-secondary/30 px-4 py-20 sm:px-6 lg:px-8 md:py-32 text-foreground">
+    <section id="teaching" aria-labelledby="teaching-heading" className="scroll-mt-24 bg-background px-4 py-20 sm:px-6 lg:px-8 md:py-32 text-foreground">
       <div className="container mx-auto max-w-5xl">
         <header className="mb-12 max-w-3xl">
         <h2 id="teaching-heading" className="mb-6 text-balance text-4xl font-bold tracking-tight md:text-5xl">Teaching &amp; Mentorship</h2>
@@ -37,7 +37,7 @@ export function TeachingSection() {
         <h3 className="mb-6 mt-12 text-2xl font-semibold">In students&apos; words</h3>
         <div className="grid gap-6 md:grid-cols-2">
           {[reviews[0], reviews[3]].map((review) => (
-            <figure key={review.source} className="rounded-xl bg-background p-6 text-foreground">
+            <figure key={review.source} className="rounded-xl border border-border bg-card p-6 text-card-foreground">
               <blockquote className="text-lg leading-relaxed">{`“${review.quote}”`}</blockquote>
               <figcaption className="mt-5 text-sm font-medium text-primary">{review.source}</figcaption>
             </figure>

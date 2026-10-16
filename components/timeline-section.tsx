@@ -4,7 +4,7 @@ const resumeUrl = profile.cv
 
 export function TimelineSection() {
   return (
-    <section id="resume" aria-labelledby="resume-heading" className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8 md:py-32">
+    <section id="resume" aria-labelledby="resume-heading" className="scroll-mt-24 bg-secondary/30 px-4 py-20 sm:px-6 lg:px-8 md:py-32">
       <div className="container mx-auto max-w-5xl">
         <header className="mb-10 text-center">
           <h2 id="resume-heading" className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">Curriculum Vitae</h2>
