@@ -15,8 +15,7 @@ export function SoftwareSection() {
     <section id="software" aria-labelledby="software-heading" className="scroll-mt-24 bg-background px-4 py-20 text-foreground sm:px-6 lg:px-8 md:py-32">
       <div className="container mx-auto max-w-6xl">
         <header className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 id="software-heading" className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">Research Software</h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">Tools I develop to make scientific analysis reusable and easier to inspect.</p>
+          <h2 id="software-heading" className="text-4xl font-bold tracking-tight md:text-5xl">Research Software</h2>
         </header>
 
         <article aria-labelledby="spatial-vtk-heading" className="research-card overflow-hidden rounded-2xl border border-border shadow-sm">
