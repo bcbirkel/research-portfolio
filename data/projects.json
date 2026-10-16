@@ -47,7 +47,7 @@
             "height": 1778,
             "sourceSlide": "21",
             "alt": "Pearson correlation matrix for conventional ground-motion goodness-of-fit metrics, showing strong correlations among amplitude and energy measures.",
-            "caption": "Conventional metrics often repeat similar information. Metric definitions follow Anderson (2004). Defense slide 21."
+            "caption": "Conventional metrics often repeat similar information. Metric definitions follow Anderson (2004)."
           },
           {
             "src": "/images/research/metric-correlation-selected.webp",
@@ -55,7 +55,7 @@
             "height": 1730,
             "sourceSlide": "22",
             "alt": "Pearson correlation matrix for PGA, duration, Fourier amplitude spectra, delay, delay-corrected correlation, and PSA.",
-            "caption": "The selected set separates amplitude, timing, duration, and shape more clearly. Defense slide 22."
+            "caption": "The selected set separates amplitude, timing, duration, and shape more clearly."
           }
         ],
         "layout": "pair"
@@ -70,12 +70,12 @@
             "height": 1812,
             "sourceSlide": "29",
             "alt": "Four-stage diagram showing outside-basin reference selection, horizontal PGA measurement, distance correction, and aggregation of amplification factors.",
-            "caption": "The worked example follows the calculation from individual waveforms to an event-level basin amplification factor. Defense slide 29."
+            "caption": "The worked example follows the calculation from individual waveforms to an event-level basin amplification factor."
           }
         ]
       }
     ],
-    "sourceNote": "Research narrative and figures from my dissertation defense, slides 10, 13–14, 18–19, 21–22, 29–33, and dissertation Chapter 1. Animations preserve the original model views in a web video format.",
+    "sourceNote": "Methods and results are detailed in Chapter 1 of my dissertation.",
     "codeLinks": [
       {
         "label": "spatial-vtk source code",
@@ -93,7 +93,7 @@
         "height": 1345,
         "sourceSlide": "10",
         "alt": "Southern California basins, mountains, hills, and valleys overlain with population-density classes.",
-        "caption": "Many densely populated areas occupy sedimentary basins. Their geometry and low-velocity sediments make local wave propagation an important part of evaluating earthquake shaking. Defense slide 10."
+        "caption": "Many densely populated areas occupy sedimentary basins. Their geometry and low-velocity sediments make local wave propagation an important part of evaluating earthquake shaking."
       }
     ],
     "methodFigures": [],
@@ -109,7 +109,7 @@
             "height": 960,
             "sourceSlide": "14",
             "alt": "Rotating three-dimensional view of the CVM-SI simulation mesh, colored by shear-wave speed.",
-            "caption": "CVM-SI: the spatial distribution of shear-wave speed in the spectral-element simulation mesh. The view uses threefold vertical exaggeration. Defense slide 14."
+            "caption": "CVM-SI: the spatial distribution of shear-wave speed in the spectral-element simulation mesh. The view uses threefold vertical exaggeration."
           },
           {
             "src": "/images/research/cvm-h-rotation.webp",
@@ -118,7 +118,7 @@
             "height": 960,
             "sourceSlide": "14",
             "alt": "Rotating three-dimensional view of the CVM-H simulation mesh, colored by shear-wave speed.",
-            "caption": "CVM-H: detailed basin geometry contrasts with the surrounding regional structure. The view uses threefold vertical exaggeration. Defense slide 14."
+            "caption": "CVM-H: detailed basin geometry contrasts with the surrounding regional structure. The view uses threefold vertical exaggeration."
           }
         ],
         "layout": "pair"
@@ -144,7 +144,7 @@
             "height": 1702,
             "sourceSlide": "32",
             "alt": "Map locating CI.USC and six eastern earthquakes labeled A through F.",
-            "caption": "The six source locations correspond to panels A–F in the waveform comparison. Defense slide 32."
+            "caption": "The six source locations correspond to panels A–F in the waveform comparison."
           },
           {
             "src": "/images/research/love-wave-records.webp",
@@ -152,7 +152,7 @@
             "height": 2200,
             "sourceSlide": "32",
             "alt": "Observed, CVM-SI, and CVM-H transverse waveforms for six eastern earthquakes recorded at CI.USC, with late arrivals highlighted.",
-            "caption": "The observed late wave packets persist across multiple eastern sources, while the simulations often fail to reproduce them. Defense slide 32."
+            "caption": "The observed late wave packets persist across multiple eastern sources, while the simulations often fail to reproduce them."
           }
         ],
         "layout": "pair"
@@ -180,7 +180,7 @@
     "findings": [
       {
         "title": "GDANT improves recovery in the noisy synthetic tests",
-        "text": "With 5% added noise, GDANT had the lowest average normalized model error among the four approaches compared in the defense. For the noise-free tests, the combined Direct + GDANT approach had the lowest average error."
+        "text": "With 5% added noise, GDANT had the lowest average normalized model error among the four approaches tested. For the noise-free tests, the combined Direct + GDANT approach had the lowest average error."
       },
       {
         "title": "Field results agree with an independent structural constraint",
@@ -202,7 +202,7 @@
             "height": 146,
             "sourceSlide": "120",
             "alt": "GDANT objective minimizing target-kernel mismatch plus covariance, nuisance-mode, L1 sparsity, and L2 coefficient-size penalties.",
-            "caption": "The optimization chooses measurement weights a. The target q, sensitivity operator G, measurement covariance C, and nuisance modes B define the scientific and statistical tradeoffs. Defense slide 120."
+            "caption": "The optimization chooses measurement weights a. The target q, sensitivity operator G, measurement covariance C, and nuisance modes B define the scientific and statistical tradeoffs."
           }
         ]
       },
@@ -216,7 +216,7 @@
             "height": 1244,
             "sourceSlide": "47",
             "alt": "Three rows comparing Direct, DDANT, and GDANT raypath combinations and their summed sensitivity kernels.",
-            "caption": "The final kernels make the distinction between a direct path, a fixed two-path difference, and a designed multi-path combination visible. Defense slide 47."
+            "caption": "The final kernels make the distinction between a direct path, a fixed two-path difference, and a designed multi-path combination visible."
           }
         ]
       },
@@ -226,7 +226,7 @@
         "figures": []
       }
     ],
-    "sourceNote": "Research narrative and figures from my dissertation defense, slides 43–50 and 120, and dissertation Chapter 2. The synthetic summary table follows defense slide 49.",
+    "sourceNote": "Methods and results are detailed in Chapter 2 of my dissertation.",
     "codeLinks": [],
     "contextFigures": [
       {
@@ -235,7 +235,7 @@
         "height": 790,
         "sourceSlide": "43",
         "alt": "Comparison of an idealized source-to-receiver raypath with its broad finite-frequency sensitivity kernel.",
-        "caption": "A travel-time measurement samples a finite volume around a path. GDANT uses these sensitivity kernels to design combinations of measurements that emphasize a target region. Defense slide 43."
+        "caption": "A travel-time measurement samples a finite volume around a path. GDANT uses these sensitivity kernels to design combinations of measurements that emphasize a target region."
       }
     ],
     "methodFigures": [],
@@ -251,13 +251,13 @@
             "height": 454,
             "sourceSlide": "46",
             "alt": "Animation showing weighted seismic paths accumulating into a GDANT sensitivity kernel.",
-            "caption": "As the path contributions accumulate, the combined kernel changes shape. The final measurement is sensitive to the weighted sum of those individual kernels. Defense slide 46."
+            "caption": "As the path contributions accumulate, the combined kernel changes shape. The final measurement is sensitive to the weighted sum of those individual kernels."
           }
         ]
       },
       {
         "title": "Test recovery against known synthetic structures",
-        "text": "Synthetic models provide a known answer against which to measure recovery. The example below compares direct ANT, DDANT, GDANT, and the hybrid Direct + GDANT inversion on the same structure.\n\nAcross the tests summarized in the defense, GDANT’s average normalized root-mean-square error was 0.1617 with 5% noise, compared with 0.2640 for direct ANT. In the noise-free case, Direct + GDANT and direct ANT were nearly tied. These comparisons distinguish performance with clean measurements from performance after noise is introduced.",
+        "text": "Synthetic models provide a known answer against which to measure recovery. The example below compares direct ANT, DDANT, GDANT, and the hybrid Direct + GDANT inversion on the same structure.\n\nAcross the synthetic tests, GDANT’s average normalized root-mean-square error was 0.1617 with 5% noise, compared with 0.2640 for direct ANT. In the noise-free case, Direct + GDANT and direct ANT were nearly tied. These comparisons distinguish performance with clean measurements from performance after noise is introduced.",
         "figures": [
           {
             "src": "/images/research/synthetic-recovery.webp",
@@ -265,11 +265,11 @@
             "height": 1965,
             "sourceSlide": "49",
             "alt": "Known synthetic velocity perturbation model and reconstructions using Direct, DDANT, GDANT, and Direct plus GDANT.",
-            "caption": "The common reference model lets the recovered geometry and velocity contrasts be compared directly across methods. Defense slide 49."
+            "caption": "The common reference model lets the recovered geometry and velocity contrasts be compared directly across methods."
           }
         ],
         "table": {
-          "caption": "Average normalized root-mean-square model error across synthetic tests, reproduced from defense slide 49. Lower values indicate better recovery.",
+          "caption": "Average normalized root-mean-square model error across synthetic tests. Lower values indicate better recovery.",
           "headers": [
             "Method",
             "No added noise",
@@ -309,7 +309,7 @@
             "height": 1786,
             "sourceSlide": "50",
             "alt": "Five shear-wave velocity sections along BASIN SB1 comparing the hybrid GDANT model with other local and regional models, with a gravity-derived profile overlain.",
-            "caption": "The upper panel shows the hybrid GDANT result. The common gravity-derived profile provides an independent structural comparison across all five models. Model and gravity comparisons follow the sources cited on defense slide 50, including Li et al. (2024). Defense slide 50."
+            "caption": "The upper panel shows the hybrid GDANT result. The common gravity-derived profile provides an independent structural comparison across all five models. The comparison includes results from Li et al. (2024)."
           }
         ]
       }
@@ -322,7 +322,7 @@
     "description": "Applying my GDANT method to dense seismic observations to image shallow structure beneath the Melamchi Valley and investigate its links to mountain hydrology.",
     "image": "/images/research/nepal-ridge-profile.webp",
     "imageAlt": "Shear-wave velocity beneath the Melamchi ridgeline, with topography, station locations, settlements, and masked regions of low resolution.",
-    "imageCaption": "The updated ridgeline profile from defense slide 65. Warmer colors indicate slower material and cooler colors faster material; masked regions have low resolution because of the array geometry.",
+    "imageCaption": "Shear-wave velocity along the ridgeline. Warmer colors indicate slower material and cooler colors faster material; masked regions have low resolution because of the array geometry.",
     "tags": [
       "Seismic Imaging",
       "Hydrology",
@@ -344,7 +344,7 @@
       },
       {
         "title": "Exhumation and fracturing connect the two scales",
-        "text": "The defense develops a physical explanation in which southern surface weathering and northern fracture damage produce contrasting velocity patterns at shallow and ridge-interior scales."
+        "text": "I developed a physical explanation in which southern surface weathering and northern fracture damage produce contrasting velocity patterns at shallow and ridge-interior scales."
       }
     ],
     "methods": [
@@ -358,7 +358,7 @@
             "height": 1069,
             "sourceSlide": "128",
             "alt": "Workflow connecting stacked cross correlations, phase picking, fixed measurement definitions, forward and adjoint simulations, GDANT row construction, Bayesian inversion, and held-out validation.",
-            "caption": "The workflow separates phase selection, measurement design, and iterative model updates. GDANT rows are constructed in the first iteration and retained thereafter. Defense slide 128."
+            "caption": "The workflow separates phase selection, measurement design, and iterative model updates. GDANT rows are constructed in the first iteration and retained thereafter."
           }
         ]
       },
@@ -372,7 +372,7 @@
             "height": 1546,
             "sourceSlide": "132",
             "alt": "Cross-correlation decomposed into frequency components, with phase-vector rotations comparing correct and incorrect group-time choices.",
-            "caption": "Consistent group timing aligns the phase vectors across frequency. This provides a way to evaluate candidate arrivals before inversion. Defense slide 132."
+            "caption": "Consistent group timing aligns the phase vectors across frequency. This provides a way to evaluate candidate arrivals before inversion."
           }
         ]
       },
@@ -386,7 +386,7 @@
             "height": 1422,
             "sourceSlide": "133",
             "alt": "Candidate phase picks and a graph-selected phase-velocity surface plotted against frequency and path midpoint, with causal and acausal picks distinguished.",
-            "caption": "The selected picks form a coherent surface across the measurement bank, rather than a collection of unrelated single-frequency choices. Defense slide 133."
+            "caption": "The selected picks form a coherent surface across the measurement bank, rather than a collection of unrelated single-frequency choices."
           }
         ]
       },
@@ -396,7 +396,7 @@
         "figures": []
       }
     ],
-    "sourceNote": "Research narrative and figures from my dissertation defense, slides 53–74, 128, and 132–133, and dissertation Chapter 3. The profile is extracted from slide 65. Shallow velocity data follow Medwedeff et al. (2022); the stress interpretation follows the references identified in the figure captions.",
+    "sourceNote": "Methods and results are detailed in Chapter 3 of my dissertation. Shallow velocity data follow Medwedeff et al. (2022); references for the stress interpretation are included in the figure captions.",
     "codeLinks": [],
     "contextFigures": [
       {
@@ -405,7 +405,7 @@
         "height": 1392,
         "sourceSlide": "56–57",
         "alt": "Three-panel map showing the Himalayan collision, central Nepal faults and Gorkha earthquake setting, and the Melamchi nodal array with ridgeline, hillslope, and borehole sites.",
-        "caption": "The maps connect the Himalayan tectonic setting to the local array. The ridgeline deployment and nearby hillslope and borehole observations make it possible to compare structure across spatial scales. Defense slides 56–57."
+        "caption": "The maps connect the Himalayan tectonic setting to the local array. The ridgeline deployment and nearby hillslope and borehole observations make it possible to compare structure across spatial scales."
       }
     ],
     "methodFigures": [],
@@ -420,7 +420,7 @@
             "height": 1060,
             "sourceSlide": "65",
             "alt": "Shear-wave velocity beneath the Melamchi ridgeline, with topography, station locations, settlements, and masked regions of low resolution.",
-            "caption": "Red and orange mark lower shear-wave speeds, while blue marks higher speeds. The color scale spans 1.4–2.4 km/s. Masked regions have low resolution because of the array geometry. These contrasts extend beneath the near-surface zone sampled by shallow surveys. Defense slide 65."
+            "caption": "Red and orange mark lower shear-wave speeds, while blue marks higher speeds. The color scale spans 1.4–2.4 km/s. Masked regions have low resolution because of the array geometry. These contrasts extend beneath the near-surface zone sampled by shallow surveys."
           }
         ]
       },
@@ -434,13 +434,13 @@
             "height": 1315,
             "sourceSlide": "66",
             "alt": "Shallow average shear-wave velocity and Vs30 versus distance north from Melamchi, with higher values at many northern sites.",
-            "caption": "Site-scale MASW measurements provide the shallow comparison to the GDANT profile above. Data are from Medwedeff et al. (2022), as credited in the defense. Defense slide 66."
+            "caption": "Site-scale MASW measurements provide the shallow comparison to the GDANT profile above. Data are from Medwedeff et al. (2022)."
           }
         ]
       },
       {
         "title": "Link the velocity contrasts to rock transformation",
-        "text": "The defense brings these observations together with a northward increase in uplift and exhumation. As rock moves toward the surface, unloading changes the balance between principal stresses. Greater differential stress can promote microcracking and the development of connected fracture networks.\n\nThe stress-history schematic illustrates this mechanism. The interpretation draws on Leith et al. (2014), with the regional section modified from Pandey (1995).",
+        "text": "I relate these observations to a northward increase in uplift and exhumation. As rock moves toward the surface, unloading changes the balance between principal stresses. Greater differential stress can promote microcracking and the development of connected fracture networks.\n\nThe stress-history schematic illustrates this mechanism. The interpretation draws on Leith et al. (2014), with the regional section modified from Pandey (1995).",
         "figures": [
           {
             "src": "/images/research/nepal-exhumation-stress.webp",
@@ -448,7 +448,7 @@
             "height": 1330,
             "sourceSlide": "71",
             "alt": "Two schematic exhumation histories showing changes in principal stresses as rock rises toward the surface, producing high versus moderate differential stress.",
-            "caption": "Different exhumation paths produce different stress histories. The proposed mechanism connects tectonic unloading with fracture development in the ridge interior. Defense slide 71."
+            "caption": "Different exhumation paths produce different stress histories. The proposed mechanism connects tectonic unloading with fracture development in the ridge interior."
           }
         ]
       },
@@ -462,7 +462,7 @@
             "height": 646,
             "sourceSlide": "73",
             "alt": "Conceptual southern Melamchi section with slow unconsolidated weathered sediment over faster, less fractured bedrock.",
-            "caption": "Southern ridge: a slow surface layer overlies a comparatively fast interior. Defense slide 73."
+            "caption": "Southern ridge: a slow surface layer overlies a comparatively fast interior."
           },
           {
             "src": "/images/research/nepal-northern-concept.webp",
@@ -470,7 +470,7 @@
             "height": 670,
             "sourceSlide": "73",
             "alt": "Conceptual northern Melamchi section with highly fractured bedrock and stronger vertical uplift.",
-            "caption": "Northern ridge: exposed fractured rock is faster than loose sediment but slower than competent bedrock. Defense slide 73."
+            "caption": "Northern ridge: exposed fractured rock is faster than loose sediment but slower than competent bedrock."
           }
         ],
         "layout": "pair"
